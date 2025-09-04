@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Quiz, Question, UserAnswer, QuizResult } from "@/types/quiz";
 import { QuizCard } from "./QuizCard";
 import { ProgressBar } from "./ProgressBar";
@@ -18,6 +18,13 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [showNextButton, setShowNextButton] = useState(false);
+  const [hasAnswered, setHasAnswered] = useState(false);
+
+  // Reset hasAnswered when question changes
+  useEffect(() => {
+    setHasAnswered(false);
+    setShowNextButton(false);
+  }, [currentQuestionIndex]);
 
   const calculateResults = (answers: UserAnswer[], quiz: Quiz): QuizResult => {
     const correctAnswers = answers.filter(answer => answer.isCorrect).length;
@@ -60,13 +67,21 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
     setShowNextButton(false);
+    setHasAnswered(false);
   };
 
   const handleAnswer = (answer: UserAnswer) => {
+    if (hasAnswered) return; // Prevent multiple answers
+    
     const newAnswers = [...userAnswers];
     newAnswers[currentQuestionIndex] = answer;
     setUserAnswers(newAnswers);
-    setShowNextButton(true);
+    setHasAnswered(true);
+    
+    // Show next button after a short delay to allow user to see feedback
+    setTimeout(() => {
+      setShowNextButton(true);
+    }, 1000);
   };
 
   const handleNextQuestion = () => {
@@ -75,6 +90,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     if (currentQuestionIndex < selectedQuiz.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setShowNextButton(false);
+      setHasAnswered(false);
     } else {
       setCurrentState('results');
     }
@@ -86,6 +102,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
       setCurrentQuestionIndex(0);
       setUserAnswers([]);
       setShowNextButton(false);
+      setHasAnswered(false);
     }
   };
 
@@ -95,6 +112,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
     setShowNextButton(false);
+    setHasAnswered(false);
   };
 
   if (currentState === 'selection') {
@@ -122,6 +140,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'taking' && selectedQuiz) {
     const currentQuestion = selectedQuiz.questions[currentQuestionIndex];
+    const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
       <div className="container mx-auto px-4 py-8">
@@ -138,16 +157,23 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
           onAnswer={handleAnswer}
         />
 
-        {showNextButton && (
-          <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-8">
+          {showNextButton && (
             <Button 
               onClick={handleNextQuestion}
-              className="bg-primary hover:bg-primary/90"
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 animate-fade-in"
             >
-              {currentQuestionIndex < selectedQuiz.questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+              {isLastQuestion ? 'Finish Quiz' : 'Next Question'}
             </Button>
-          </div>
-        )}
+          )}
+          
+          {!showNextButton && hasAnswered && (
+            <div className="text-muted-foreground animate-pulse">
+              Processing your answer...
+            </div>
+          )}
+        </div>
       </div>
     );
   }

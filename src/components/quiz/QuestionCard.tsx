@@ -35,18 +35,18 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
 
   const getOptionStyle = (index: number) => {
     if (selectedOption === null) {
-      return "border-border hover:border-primary/50 hover:bg-primary/5";
+      return "border-2 border-border hover:border-primary/70 hover:bg-primary/5 transition-all duration-200";
     }
     
     if (index === question.correct) {
-      return "border-success bg-success/10 text-success-foreground";
+      return "border-2 border-success bg-success/15 text-success-foreground";
     }
     
     if (index === selectedOption && index !== question.correct) {
-      return "border-destructive bg-destructive/10 text-destructive-foreground";
+      return "border-2 border-destructive bg-destructive/15 text-destructive-foreground";
     }
     
-    return "border-border opacity-50";
+    return "border-2 border-muted opacity-60";
   };
 
   const getOptionIcon = (index: number) => {
