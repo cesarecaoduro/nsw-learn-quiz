@@ -2,6 +2,78 @@ import { Quiz } from "@/types/quiz";
 
 export const sampleQuizzes: Quiz[] = [
   {
+    id: "year4-nsw",
+    name: "Year 4 NSW Curriculum Quiz",
+    year: "4",
+    questions: [
+      {
+        id: 1,
+        subject: "English",
+        question: "What is a noun?",
+        options: [
+          "A describing word",
+          "A naming word for a person, place or thing",
+          "An action word",
+          "A connecting word"
+        ],
+        correct: 1,
+        explanation: "A noun is a naming word that identifies a person, place, or thing."
+      },
+      {
+        id: 2,
+        subject: "Mathematics",
+        question: "What is 6 × 7?",
+        options: ["35", "42", "48", "54"],
+        correct: 1,
+        explanation: "6 × 7 = 42. This is part of the times tables."
+      },
+      {
+        id: 3,
+        subject: "Science",
+        question: "What do plants need to grow?",
+        options: ["Only water", "Only sunlight", "Water, sunlight, air and nutrients", "Only soil"],
+        correct: 2,
+        explanation: "Plants need water, sunlight, air (carbon dioxide), and nutrients from soil to grow properly."
+      }
+    ]
+  },
+  {
+    id: "year5-nsw",
+    name: "Year 5 NSW Curriculum Quiz",
+    year: "5",
+    questions: [
+      {
+        id: 1,
+        subject: "English",
+        question: "What is an adjective?",
+        options: [
+          "A word that describes a noun",
+          "A word that shows action",
+          "A naming word",
+          "A connecting word"
+        ],
+        correct: 0,
+        explanation: "An adjective is a word that describes or gives more information about a noun."
+      },
+      {
+        id: 2,
+        subject: "Mathematics",
+        question: "What is 144 ÷ 12?",
+        options: ["10", "11", "12", "13"],
+        correct: 2,
+        explanation: "144 ÷ 12 = 12. You can think of this as 'how many 12s go into 144?'"
+      },
+      {
+        id: 3,
+        subject: "Science",
+        question: "What are the three states of matter?",
+        options: ["Hot, warm, cold", "Solid, liquid, gas", "Big, medium, small", "Hard, soft, smooth"],
+        correct: 1,
+        explanation: "The three states of matter are solid, liquid, and gas."
+      }
+    ]
+  },
+  {
     id: "year6-nsw",
     name: "Year 6 NSW Curriculum Quiz",
     year: "6",

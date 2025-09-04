@@ -5,6 +5,7 @@ import { ProgressBar } from "./ProgressBar";
 import { QuestionCard } from "./QuestionCard";
 import { QuizResults } from "./QuizResults";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface QuizAppProps {
   availableQuizzes: Quiz[];
@@ -19,6 +20,15 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [showNextButton, setShowNextButton] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
+  const [selectedYear, setSelectedYear] = useState<string>('all');
+
+  // Get unique years from available quizzes
+  const availableYears = Array.from(new Set(availableQuizzes.map(quiz => quiz.year))).sort();
+  
+  // Filter quizzes based on selected year
+  const filteredQuizzes = selectedYear === 'all' 
+    ? availableQuizzes 
+    : availableQuizzes.filter(quiz => quiz.year === selectedYear);
 
   // Reset hasAnswered when question changes
   useEffect(() => {
@@ -126,20 +136,53 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
             <h1 className="text-3xl sm:text-4xl font-fredoka font-bold text-gray-900 mb-4">
               NSW Learning Quiz 🌟
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
               Choose your adventure and test your knowledge!
             </p>
+            
+            {/* Year Filter */}
+            <div className="flex justify-center mb-6">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-gray-700">Filter by Year:</span>
+                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Select Year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Years</SelectItem>
+                    {availableYears.map((year) => (
+                      <SelectItem key={year} value={year}>
+                        Year {year}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
           </div>
           
           {/* Quiz Cards Grid */}
           <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {availableQuizzes.map((quiz) => (
-              <QuizCard 
-                key={quiz.id} 
-                quiz={quiz} 
-                onSelect={handleQuizSelect} 
-              />
-            ))}
+            {filteredQuizzes.length > 0 ? (
+              filteredQuizzes.map((quiz) => (
+                <QuizCard 
+                  key={quiz.id} 
+                  quiz={quiz} 
+                  onSelect={handleQuizSelect} 
+                />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-500 text-lg">No quizzes available for Year {selectedYear}</p>
+                <Button 
+                  onClick={() => setSelectedYear('all')} 
+                  variant="outline" 
+                  className="mt-4"
+                >
+                  Show All Years
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
