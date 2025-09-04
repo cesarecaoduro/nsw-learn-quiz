@@ -2,12 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Quiz } from "@/types/quiz";
-import { Star, User } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface QuizCardProps {
   quiz: Quiz;
   onSelect: (quiz: Quiz) => void;
 }
+
 
 const subjectColors = {
   "English": "bg-rose-100 text-rose-800 border-rose-300",

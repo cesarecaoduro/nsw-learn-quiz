@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const tailwindcssAnimate = require("tailwindcss-animate");
 
 export default {
 	darkMode: ["class"],
@@ -73,6 +75,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				subject: {
+					english: 'hsl(var(--english))',
+					'english-foreground': 'hsl(var(--english-foreground))',
+					mathematics: 'hsl(var(--mathematics))',
+					'mathematics-foreground': 'hsl(var(--mathematics-foreground))',
+					science: 'hsl(var(--science))',
+					'science-foreground': 'hsl(var(--science-foreground))',
+					history: 'hsl(var(--history))',
+					'history-foreground': 'hsl(var(--history-foreground))',
+					geography: 'hsl(var(--geography))',
+					'geography-foreground': 'hsl(var(--geography-foreground))'
 				}
 			},
 			fontFamily: {
@@ -154,5 +168,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

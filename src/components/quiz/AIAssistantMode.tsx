@@ -35,7 +35,7 @@ export const AIAssistantMode = ({ onBack }: AIAssistantModeProps) => {
     '6': 'Stage 3'
   };
 
-  const subjectOutcomes = {
+  const subjectOutcomes: Record<string, Record<string, string>> = {
     'English': {
       'K': 'Basic phonics, letter recognition, simple vocabulary',
       '1': 'Reading simple texts, basic writing, spelling patterns',
@@ -103,7 +103,7 @@ export const AIAssistantMode = ({ onBack }: AIAssistantModeProps) => {
     }
 
     const stage = curriculumStages[selectedYear as keyof typeof curriculumStages];
-    const outcomes = (subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes] as any)?.[selectedYear];
+    const outcomes = subjectOutcomes[selectedSubject]?.[selectedYear];
     const topicFocus = customTopic || "General curriculum topics";
     
     const prompt = `Create a NSW curriculum-aligned quiz for Year ${selectedYear === 'K' ? 'Kindergarten (K)' : selectedYear} ${selectedSubject} with ${questionCount} multiple-choice questions.
@@ -158,7 +158,7 @@ Generate the ${questionCount} questions now in the exact JSON format specified a
   };
 
   const getExampleQuestion = () => {
-    const examples = {
+    const examples: Record<string, Record<string, string>> = {
       'English': {
         'K': '"Which letter makes the /m/ sound?" with options showing different letters',
         '1': '"What type of word is \'dog\' in this sentence?" focusing on parts of speech',
@@ -188,7 +188,7 @@ Generate the ${questionCount} questions now in the exact JSON format specified a
       }
     };
     
-    return (examples[selectedSubject as keyof typeof examples] as any)?.[selectedYear] || 
+    return examples[selectedSubject]?.[selectedYear] || 
            'Age-appropriate questions that test understanding of key concepts';
   };
 
@@ -366,7 +366,7 @@ Generate the ${questionCount} questions now in the exact JSON format specified a
                     <strong>Stage:</strong> {curriculumStages[selectedYear as keyof typeof curriculumStages]}
                   </div>
                   <div className="text-xs text-blue-700 mt-1">
-                    <strong>Focus:</strong> {(subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes] as any)?.[selectedYear]}
+                    <strong>Focus:</strong> {subjectOutcomes[selectedSubject]?.[selectedYear]}
                   </div>
                 </div>
               )}

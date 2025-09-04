@@ -53,7 +53,7 @@ export const AdvancedModeCreator = ({ onQuizUploaded, onBack }: AdvancedModeCrea
   }
 ]`;
 
-  const validateJson = (jsonString: string): { isValid: boolean; errors: string[]; questions?: any[] } => {
+  const validateJson = (jsonString: string): { isValid: boolean; errors: string[]; questions?: unknown[] } => {
     const errors: string[] = [];
     
     if (!jsonString.trim()) {
@@ -95,7 +95,7 @@ export const AdvancedModeCreator = ({ onQuizUploaded, onBack }: AdvancedModeCrea
           errors.push(`Question ${questionNum}: 'options' field is required and must be an array`);
         } else if (q.options.length !== 4) {
           errors.push(`Question ${questionNum}: 'options' must contain exactly 4 items`);
-        } else if (!q.options.every((opt: any) => typeof opt === 'string' && opt.trim())) {
+        } else if (!q.options.every((opt: unknown) => typeof opt === 'string' && opt.trim())) {
           errors.push(`Question ${questionNum}: All options must be non-empty strings`);
         }
 

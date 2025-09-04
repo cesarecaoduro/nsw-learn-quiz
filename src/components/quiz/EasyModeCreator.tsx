@@ -56,7 +56,7 @@ export const EasyModeCreator = ({ onQuizUploaded, onBack }: EasyModeCreatorProps
     }
   };
 
-  const updateQuestion = (index: number, field: keyof Question, value: any) => {
+  const updateQuestion = (index: number, field: keyof Question, value: unknown) => {
     const updatedQuestions = [...questions];
     if (field === 'options') {
       updatedQuestions[index] = {

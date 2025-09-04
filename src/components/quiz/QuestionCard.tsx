@@ -13,6 +13,7 @@ interface QuestionCardProps {
   key?: string | number;
 }
 
+
 const subjectColors = {
   "English": "bg-purple-100 text-purple-800 border-purple-200",
   "Mathematics": "bg-blue-100 text-blue-800 border-blue-200", 

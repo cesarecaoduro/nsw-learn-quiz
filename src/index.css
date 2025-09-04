@@ -47,6 +47,18 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Subject-specific semantic tokens */
+    --english: 244 63 94; /* rose */
+    --english-foreground: 255 255 255;
+    --mathematics: 251 146 60; /* orange */
+    --mathematics-foreground: 255 255 255;
+    --science: 34 197 94; /* green */
+    --science-foreground: 255 255 255;
+    --history: 168 85 247; /* purple */
+    --history-foreground: 255 255 255;
+    --geography: 59 130 246; /* blue */
+    --geography-foreground: 255 255 255;
+
     /* Animations and responsive spacing */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --spacing-xs: 0.25rem;
