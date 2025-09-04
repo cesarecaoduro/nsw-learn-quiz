@@ -93,82 +93,84 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto shadow-lg border border-gray-200 rounded-xl bg-white">
-      <CardHeader className="bg-gray-50 border-b border-gray-100 p-4 sm:p-6">
-        <div className="flex justify-center mb-3">
-          <Badge className={`font-medium border text-xs sm:text-sm px-2 py-1 ${subjectInfo.color}`}>
-            {subjectInfo.emoji} {question.subject}
-          </Badge>
-        </div>
+    <div className="w-full px-4">
+      <Card className="w-full max-w-none mx-auto shadow-lg border border-gray-200 rounded-xl bg-white overflow-hidden">
+        <CardHeader className="bg-gray-50 border-b border-gray-100 p-4 sm:p-6">
+          <div className="flex justify-center mb-3">
+            <Badge className={`font-medium border text-xs sm:text-sm px-2 py-1 ${subjectInfo.color}`}>
+              {subjectInfo.emoji} {question.subject}
+            </Badge>
+          </div>
+          
+          <h2 className="text-base sm:text-lg md:text-xl font-fredoka font-semibold leading-relaxed text-center text-gray-900 break-words">
+            {question.question}
+          </h2>
+        </CardHeader>
         
-        <h2 className="text-lg sm:text-xl md:text-2xl font-fredoka font-semibold leading-relaxed text-center text-gray-900 px-2">
-          {question.question}
-        </h2>
-      </CardHeader>
-      
-      <CardContent className="p-3 sm:p-6">
-        <div className="grid gap-3 sm:gap-4">
-          {question.options.map((option, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              className={`justify-start text-left h-auto p-3 sm:p-4 text-sm sm:text-base rounded-lg ${getOptionStyle(index)}`}
-              onClick={() => handleOptionSelect(index)}
-              disabled={selectedOption !== null}
-            >
-              <div className="flex items-start justify-between w-full gap-2 sm:gap-4">
-                <div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
-                  <div className="bg-gray-100 text-gray-700 font-fredoka font-bold text-sm sm:text-lg w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+        <CardContent className="p-4 sm:p-6">
+          <div className="space-y-3 sm:space-y-4">
+            {question.options.map((option, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                className={`w-full justify-start text-left h-auto p-3 sm:p-4 text-sm sm:text-base rounded-lg whitespace-normal ${getOptionStyle(index)}`}
+                onClick={() => handleOptionSelect(index)}
+                disabled={selectedOption !== null}
+              >
+                <div className="flex items-start w-full gap-3 min-w-0">
+                  <div className="bg-gray-100 text-gray-700 font-fredoka font-bold text-sm sm:text-base w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     {String.fromCharCode(65 + index)}
                   </div>
-                  <span className="text-left leading-relaxed font-medium text-gray-900 break-words flex-1">
-                    {option}
-                  </span>
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-2">
+                    <span className="text-left leading-relaxed font-medium text-gray-900 break-words hyphens-auto">
+                      {option}
+                    </span>
+                    <div className="shrink-0">
+                      {getOptionIcon(index)}
+                    </div>
+                  </div>
                 </div>
-                <div className="shrink-0 mt-1">
-                  {getOptionIcon(index)}
-                </div>
-              </div>
-            </Button>
-          ))}
-        </div>
+              </Button>
+            ))}
+          </div>
 
-        {showExplanation && (
-          <div className={`mt-6 p-5 rounded-lg border-2 ${selectedOption === question.correct ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
-            <div className="flex items-center gap-3 mb-3">
-              {selectedOption === question.correct ? (
-                <>
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                  <span className="font-fredoka font-bold text-green-800 text-lg">
-                    Correct! Well done! 🎉
-                  </span>
-                </>
-              ) : (
-                <>
-                  <XCircle className="w-6 h-6 text-red-600" />
-                  <span className="font-fredoka font-bold text-red-800 text-lg">
-                    Not quite right - let's learn!
-                  </span>
-                </>
-              )}
-            </div>
-            
-            <div className="space-y-3">
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <p className="font-medium text-gray-900">
-                  <strong>Correct answer:</strong> {String.fromCharCode(65 + question.correct)}. {question.options[question.correct]}
-                </p>
+          {showExplanation && (
+            <div className={`mt-6 p-5 rounded-lg border-2 ${selectedOption === question.correct ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <div className="flex items-center gap-3 mb-3">
+                {selectedOption === question.correct ? (
+                  <>
+                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <span className="font-fredoka font-bold text-green-800 text-lg">
+                      Correct! Well done! 🎉
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <XCircle className="w-6 h-6 text-red-600" />
+                    <span className="font-fredoka font-bold text-red-800 text-lg">
+                      Not quite right - let's learn!
+                    </span>
+                  </>
+                )}
               </div>
               
-              <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <p className="text-gray-800 text-sm leading-relaxed">
-                  <strong>Explanation:</strong> {question.explanation}
-                </p>
+              <div className="space-y-3">
+                <div className="bg-white rounded-lg p-4 border border-gray-200">
+                  <p className="font-medium text-gray-900 break-words">
+                    <strong>Correct answer:</strong> {String.fromCharCode(65 + question.correct)}. {question.options[question.correct]}
+                  </p>
+                </div>
+                
+                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                  <p className="text-gray-800 text-sm leading-relaxed break-words">
+                    <strong>Explanation:</strong> {question.explanation}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };

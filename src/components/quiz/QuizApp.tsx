@@ -185,7 +185,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
         
         {/* Question */}
-        <div className="container mx-auto px-4 py-6 max-w-4xl">
+        <div className="container mx-auto px-2 sm:px-4 py-6 max-w-4xl">
           <QuestionCard
             key={`question-${currentQuestionIndex}-${selectedQuiz.id}`}
             question={currentQuestion}
@@ -194,11 +194,11 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
           />
 
           {/* Next Button */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8 px-4">
             {showNextButton && (
               <Button 
                 onClick={handleNextQuestion}
-                className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3"
+                className="bg-primary hover:bg-primary/90 text-white font-medium px-6 sm:px-8 py-3"
                 size="lg"
               >
                 {isLastQuestion ? 'Finish Quiz 🏆' : 'Next Question →'}
