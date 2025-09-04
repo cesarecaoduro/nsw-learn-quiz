@@ -21,51 +21,145 @@ export default {
 		},
 		extend: {
 			colors: {
+				// Base system colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				// Semantic Primary Scale (Purple) - Main brand color
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
+					50: 'hsl(var(--primary-50))',
+					100: 'hsl(var(--primary-100))',
+					200: 'hsl(var(--primary-200))',
+					300: 'hsl(var(--primary-300))',
+					400: 'hsl(var(--primary-400))',
+					500: 'hsl(var(--primary-500))',
+					600: 'hsl(var(--primary-600))',
+					700: 'hsl(var(--primary-700))',
+					800: 'hsl(var(--primary-800))',
+					900: 'hsl(var(--primary-900))',
+					DEFAULT: 'hsl(var(--primary-500))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
+				
+				// Semantic Secondary Scale (Pink) - Accent color
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
+					50: 'hsl(var(--secondary-50))',
+					100: 'hsl(var(--secondary-100))',
+					200: 'hsl(var(--secondary-200))',
+					300: 'hsl(var(--secondary-300))',
+					400: 'hsl(var(--secondary-400))',
+					500: 'hsl(var(--secondary-500))',
+					600: 'hsl(var(--secondary-600))',
+					700: 'hsl(var(--secondary-700))',
+					800: 'hsl(var(--secondary-800))',
+					900: 'hsl(var(--secondary-900))',
+					DEFAULT: 'hsl(var(--secondary-500))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				success: {
-					DEFAULT: 'hsl(var(--success))',
-					foreground: 'hsl(var(--success-foreground))'
-				},
-				warning: {
-					DEFAULT: 'hsl(var(--warning))',
-					foreground: 'hsl(var(--warning-foreground))'
-				},
-				info: {
-					DEFAULT: 'hsl(var(--info))',
-					foreground: 'hsl(var(--info-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
-				},
+				
+				// Semantic Accent Scale (Complementary) - Supporting colors
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					50: 'hsl(var(--accent-50))',
+					100: 'hsl(var(--accent-100))',
+					200: 'hsl(var(--accent-200))',
+					300: 'hsl(var(--accent-300))',
+					400: 'hsl(var(--accent-400))',
+					500: 'hsl(var(--accent-500))',
+					600: 'hsl(var(--accent-600))',
+					700: 'hsl(var(--accent-700))',
+					800: 'hsl(var(--accent-800))',
+					900: 'hsl(var(--accent-900))',
+					DEFAULT: 'hsl(var(--accent-500))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+				
+				// Semantic State Colors
+				success: {
+					50: 'hsl(var(--success-50))',
+					100: 'hsl(var(--success-100))',
+					200: 'hsl(var(--success-200))',
+					300: 'hsl(var(--success-300))',
+					400: 'hsl(var(--success-400))',
+					500: 'hsl(var(--success-500))',
+					600: 'hsl(var(--success-600))',
+					700: 'hsl(var(--success-700))',
+					800: 'hsl(var(--success-800))',
+					900: 'hsl(var(--success-900))',
+					DEFAULT: 'hsl(var(--success-500))',
+					foreground: 'hsl(var(--success-foreground))'
 				},
+				
+				warning: {
+					50: 'hsl(var(--warning-50))',
+					100: 'hsl(var(--warning-100))',
+					200: 'hsl(var(--warning-200))',
+					300: 'hsl(var(--warning-300))',
+					400: 'hsl(var(--warning-400))',
+					500: 'hsl(var(--warning-500))',
+					600: 'hsl(var(--warning-600))',
+					700: 'hsl(var(--warning-700))',
+					800: 'hsl(var(--warning-800))',
+					900: 'hsl(var(--warning-900))',
+					DEFAULT: 'hsl(var(--warning-500))',
+					foreground: 'hsl(var(--warning-foreground))'
+				},
+				
+				error: {
+					50: 'hsl(var(--error-50))',
+					100: 'hsl(var(--error-100))',
+					200: 'hsl(var(--error-200))',
+					300: 'hsl(var(--error-300))',
+					400: 'hsl(var(--error-400))',
+					500: 'hsl(var(--error-500))',
+					600: 'hsl(var(--error-600))',
+					700: 'hsl(var(--error-700))',
+					800: 'hsl(var(--error-800))',
+					900: 'hsl(var(--error-900))',
+					DEFAULT: 'hsl(var(--error-500))',
+					foreground: 'hsl(var(--error-foreground))'
+				},
+				
+				// Backwards compatibility (deprecated)
+				destructive: {
+					DEFAULT: 'hsl(var(--error-500))',
+					foreground: 'hsl(var(--error-foreground))'
+				},
+				
+				info: {
+					DEFAULT: 'hsl(var(--primary-500))',
+					foreground: 'hsl(var(--primary-foreground))'
+				},
+				
+				// Neutral system colors
+				muted: {
+					50: 'hsl(var(--muted-50))',
+					100: 'hsl(var(--muted-100))',
+					200: 'hsl(var(--muted-200))',
+					300: 'hsl(var(--muted-300))',
+					400: 'hsl(var(--muted-400))',
+					500: 'hsl(var(--muted-500))',
+					600: 'hsl(var(--muted-600))',
+					700: 'hsl(var(--muted-700))',
+					800: 'hsl(var(--muted-800))',
+					900: 'hsl(var(--muted-900))',
+					DEFAULT: 'hsl(var(--muted-500))',
+					foreground: 'hsl(var(--muted-foreground))'
+				},
+				
+				// Surface colors
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))'
+				},
+				
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -75,18 +169,6 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				subject: {
-					english: 'hsl(var(--english))',
-					'english-foreground': 'hsl(var(--english-foreground))',
-					mathematics: 'hsl(var(--mathematics))',
-					'mathematics-foreground': 'hsl(var(--mathematics-foreground))',
-					science: 'hsl(var(--science))',
-					'science-foreground': 'hsl(var(--science-foreground))',
-					history: 'hsl(var(--history))',
-					'history-foreground': 'hsl(var(--history-foreground))',
-					geography: 'hsl(var(--geography))',
-					'geography-foreground': 'hsl(var(--geography-foreground))'
 				}
 			},
 			fontFamily: {

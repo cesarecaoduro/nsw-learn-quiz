@@ -6,38 +6,38 @@
 // Subject theme configuration using design tokens
 export const subjectTheme = {
   English: {
-    bg: 'bg-subject-english/10',
-    text: 'text-subject-english',
-    border: 'border-subject-english/20',
-    badge: 'bg-subject-english text-subject-english-foreground',
+    bg: 'bg-primary-50',
+    text: 'text-primary-700',
+    border: 'border-primary-200',
+    badge: 'bg-primary-500 text-primary-foreground',
     emoji: '📚'
   },
   Mathematics: {
-    bg: 'bg-subject-mathematics/10', 
-    text: 'text-subject-mathematics',
-    border: 'border-subject-mathematics/20',
-    badge: 'bg-subject-mathematics text-subject-mathematics-foreground',
+    bg: 'bg-accent-50', 
+    text: 'text-accent-700',
+    border: 'border-accent-200',
+    badge: 'bg-accent-500 text-accent-foreground',
     emoji: '🔢'
   },
   Science: {
-    bg: 'bg-subject-science/10',
-    text: 'text-subject-science', 
-    border: 'border-subject-science/20',
-    badge: 'bg-subject-science text-subject-science-foreground',
+    bg: 'bg-success-50',
+    text: 'text-success-700', 
+    border: 'border-success-200',
+    badge: 'bg-success-500 text-success-foreground',
     emoji: '🔬'
   },
   History: {
-    bg: 'bg-subject-history/10',
-    text: 'text-subject-history',
-    border: 'border-subject-history/20', 
-    badge: 'bg-subject-history text-subject-history-foreground',
+    bg: 'bg-secondary-50',
+    text: 'text-secondary-700',
+    border: 'border-secondary-200', 
+    badge: 'bg-secondary-500 text-secondary-foreground',
     emoji: '🏛️'
   },
   Geography: {
-    bg: 'bg-subject-geography/10',
-    text: 'text-subject-geography',
-    border: 'border-subject-geography/20',
-    badge: 'bg-subject-geography text-subject-geography-foreground', 
+    bg: 'bg-muted-100',
+    text: 'text-muted-700',
+    border: 'border-muted-300',
+    badge: 'bg-muted-600 text-white', 
     emoji: '🌍'
   }
 } as const;
@@ -45,34 +45,34 @@ export const subjectTheme = {
 // Grade theme configuration using design tokens
 export const gradeTheme = {
   A: { 
-    bg: 'bg-success/10', 
-    text: 'text-success', 
-    border: 'border-success/20',
+    bg: 'bg-success-50', 
+    text: 'text-success-700', 
+    border: 'border-success-200',
     badge: 'bg-success text-success-foreground'
   },
   B: { 
-    bg: 'bg-info/10', 
-    text: 'text-info', 
-    border: 'border-info/20',
-    badge: 'bg-info text-info-foreground' 
+    bg: 'bg-accent-50', 
+    text: 'text-accent-700', 
+    border: 'border-accent-200',
+    badge: 'bg-accent text-accent-foreground' 
   },
   C: { 
-    bg: 'bg-warning/10', 
-    text: 'text-warning', 
-    border: 'border-warning/20',
+    bg: 'bg-warning-50', 
+    text: 'text-warning-700', 
+    border: 'border-warning-200',
     badge: 'bg-warning text-warning-foreground'
   },
   D: { 
-    bg: 'bg-destructive/10', 
-    text: 'text-destructive', 
-    border: 'border-destructive/20',
-    badge: 'bg-destructive text-destructive-foreground'
+    bg: 'bg-error-50', 
+    text: 'text-error-700', 
+    border: 'border-error-200',
+    badge: 'bg-error text-error-foreground'
   },
   F: { 
-    bg: 'bg-destructive/20', 
-    text: 'text-destructive', 
-    border: 'border-destructive/30',
-    badge: 'bg-destructive text-destructive-foreground'
+    bg: 'bg-error-100', 
+    text: 'text-error-800', 
+    border: 'border-error-300',
+    badge: 'bg-error text-error-foreground'
   }
 } as const;
 

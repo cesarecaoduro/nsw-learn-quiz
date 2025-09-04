@@ -15,12 +15,12 @@ interface QuestionCardProps {
 
 
 const subjectColors = {
-  "English": "bg-purple-100 text-purple-800 border-purple-200",
-  "Mathematics": "bg-blue-100 text-blue-800 border-blue-200", 
-  "Science": "bg-green-100 text-green-800 border-green-200",
-  "History": "bg-orange-100 text-orange-800 border-orange-200",
-  "Geography": "bg-teal-100 text-teal-800 border-teal-200",
-  "Creative Arts": "bg-pink-100 text-pink-800 border-pink-200"
+  "English": "bg-pink-100 text-pink-700 border-pink-200",
+  "Mathematics": "bg-blue-100 text-blue-700 border-blue-200", 
+  "Science": "bg-emerald-100 text-emerald-700 border-emerald-200",
+  "History": "bg-purple-100 text-purple-700 border-purple-200",
+  "Geography": "bg-sky-100 text-sky-700 border-sky-200",
+  "Creative Arts": "bg-rose-100 text-rose-700 border-rose-200"
 };
 
 const subjectEmojis = {
@@ -60,7 +60,7 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
 
   const getOptionStyle = (index: number) => {
     if (selectedOption === null) {
-      return "border-2 border-gray-200 bg-white hover:border-primary hover:bg-primary/5 transition-all duration-200";
+      return "border-2 border-purple-200 bg-white hover:border-purple-400 hover:bg-purple-50 transition-all duration-200";
     }
     
     if (index === question.correct) {
@@ -95,15 +95,15 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
 
   return (
     <div className="w-full px-4">
-      <Card className="w-full max-w-none mx-auto shadow-lg border border-gray-200 rounded-xl bg-white overflow-hidden">
-        <CardHeader className="bg-gray-50 border-b border-gray-100 p-4 sm:p-6">
+      <Card className="w-full max-w-none mx-auto shadow-lg border border-purple-200 rounded-xl bg-gradient-to-br from-blue-50/30 to-purple-50/30 overflow-hidden">
+        <CardHeader className="bg-gradient-to-r from-violet-50 to-purple-50 border-b border-purple-100 p-4 sm:p-6">
           <div className="flex justify-center mb-3">
             <Badge className={`font-medium border text-xs sm:text-sm px-2 py-1 ${subjectInfo.color}`}>
               {subjectInfo.emoji} {question.subject}
             </Badge>
           </div>
           
-          <h2 className="text-base sm:text-lg md:text-xl font-fredoka font-semibold leading-relaxed text-center text-gray-900 break-words">
+          <h2 className="text-base sm:text-lg md:text-xl font-fredoka font-semibold leading-relaxed text-center text-purple-800 break-words">
             {question.question}
           </h2>
         </CardHeader>

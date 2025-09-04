@@ -23,7 +23,7 @@ NSW Quiz Fun is an educational web application that provides interactive quizzes
 - **Engaging Animations**: Smooth transitions and interactive elements
 
 ### 🎨 Design System
-- **Consistent Color Palette**: Warm amber and orange theme throughout
+- **Consistent Color Palette**: Kid-friendly purple and pink theme throughout
 - **macOS-Styled Icons**: Custom icon system with soft, rounded aesthetics
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Accessibility**: High contrast ratios and keyboard navigation support
@@ -122,9 +122,9 @@ npm run preview
 ## 🎨 Design Highlights
 
 ### Color System
-- **Primary**: Warm orange (#FB923C) and amber (#F59E0B)
-- **Backgrounds**: Clean whites with subtle amber accents
-- **Text**: High-contrast dark grays and ambers
+- **Primary**: Soft purple (#8B5CF6) and pink (#EC4899)
+- **Backgrounds**: Clean whites with subtle purple accents  
+- **Text**: High-contrast dark grays and purples
 - **Success**: Green variants for correct answers
 - **Error**: Red variants for incorrect answers
 

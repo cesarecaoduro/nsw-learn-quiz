@@ -79,10 +79,10 @@ export const AppContent = () => {
   // Show loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="text-4xl animate-bounce">🦉</div>
-          <p className="text-amber-800 font-medium">Loading your learning adventure...</p>
+          <p className="text-primary-600 font-medium">Loading your learning adventure...</p>
         </div>
       </div>
     );
@@ -91,7 +91,7 @@ export const AppContent = () => {
   // Profile Selection State
   if (appState === 'profile_selection' || showProfileCreator) {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-background flex flex-col">
         <Navbar 
           onAddQuiz={() => {}} // Hide add quiz when no profile
           onLogoClick={handleLogoClick}
@@ -119,7 +119,7 @@ export const AppContent = () => {
   // Quiz Creator State  
   if (appState === 'quiz_creator') {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-background flex flex-col">
         <Navbar 
           onAddQuiz={() => setAppState('quiz_creator')} 
           onLogoClick={handleLogoClick}
@@ -149,8 +149,8 @@ export const AppContent = () => {
   // Progress Dashboard State
   if (appState === 'progress_dashboard') {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-200 sticky top-0 z-50 shadow-sm">
+      <div className="min-h-screen bg-background flex flex-col">
+        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-b border-purple-200 sticky top-0 z-50 shadow-sm">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               {/* Logo */}
@@ -158,14 +158,14 @@ export const AppContent = () => {
                 className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
                 onClick={handleLogoClick}
               >
-                <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-xl shadow-md">
+                <div className="bg-gradient-to-br from-purple-400 to-pink-400 p-2 rounded-xl shadow-md">
                   <div className="w-6 h-6 text-white font-bold flex items-center justify-center">📚</div>
                 </div>
                 <div>
-                  <h1 className="text-lg sm:text-xl font-fredoka font-bold text-amber-900">
+                  <h1 className="text-lg sm:text-xl font-fredoka font-bold text-purple-800">
                     NSW Quiz Fun 🌟
                   </h1>
-                  <p className="text-sm text-amber-700 font-medium">
+                  <p className="text-sm text-purple-600 font-medium">
                     Learning Adventures • K-6
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export const AppContent = () => {
   // Main Quiz App State
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-200 sticky top-0 z-50 shadow-sm">
+      <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-b border-purple-200 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -207,14 +207,14 @@ export const AppContent = () => {
               className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={handleLogoClick}
             >
-              <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-xl shadow-md">
+              <div className="bg-gradient-to-br from-purple-400 to-pink-400 p-2 rounded-xl shadow-md">
                 <div className="w-6 h-6 text-white font-bold flex items-center justify-center">📚</div>
               </div>
               <div>
-                <h1 className="text-lg sm:text-xl font-fredoka font-bold text-amber-900">
+                <h1 className="text-lg sm:text-xl font-fredoka font-bold text-purple-800">
                   NSW Quiz Fun 🌟
                 </h1>
-                <p className="text-sm text-amber-700 font-medium">
+                <p className="text-sm text-purple-600 font-medium">
                   Learning Adventures • K-6
                 </p>
               </div>
@@ -226,11 +226,11 @@ export const AppContent = () => {
               {activeProfile && (
                 <div className="flex items-center gap-3">
                   {/* Profile Info (hidden on small screens) */}
-                  <div className="hidden lg:flex items-center gap-2 bg-white rounded-lg px-3 py-1 border border-amber-200">
+                  <div className="hidden lg:flex items-center gap-2 bg-white rounded-lg px-3 py-1 border border-purple-200">
                     <span className="text-lg">{activeProfile.avatar}</span>
                     <div className="text-right">
-                      <p className="text-sm font-medium text-amber-900">{activeProfile.nickname}</p>
-                      <p className="text-xs text-amber-700">
+                      <p className="text-sm font-medium text-purple-800">{activeProfile.nickname}</p>
+                      <p className="text-xs text-purple-600">
                         {activeProfile.stats.totalQuizzesTaken} quiz{activeProfile.stats.totalQuizzesTaken !== 1 ? 'es' : ''}
                         {activeProfile.stats.totalQuizzesTaken > 0 && ` • ${activeProfile.stats.averageScore}% avg`}
                       </p>
@@ -240,7 +240,7 @@ export const AppContent = () => {
                   {/* Progress Dashboard Button */}
                   <button
                     onClick={() => setAppState('progress_dashboard')}
-                    className="flex items-center gap-2 bg-white text-amber-800 border border-amber-300 hover:bg-amber-50 hover:text-amber-900 font-medium px-3 py-2 rounded-lg transition-colors"
+                    className="flex items-center gap-2 bg-white text-purple-800 border border-purple-300 hover:bg-purple-50 hover:text-purple-900 font-medium px-3 py-2 rounded-lg transition-colors"
                   >
                     <BarChart3 className="w-4 h-4" />
                     <span className="hidden sm:inline">Progress</span>

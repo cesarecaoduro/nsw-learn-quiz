@@ -66,7 +66,7 @@ export const ProfileSwitcher = ({
       <Button
         onClick={onCreateProfile}
         variant="outline"
-        className={`bg-white text-amber-800 border-amber-300 hover:bg-amber-50 hover:text-amber-900 font-medium ${className}`}
+        className={`bg-white text-purple-800 border-purple-300 hover:bg-purple-50 hover:text-purple-900 font-medium ${className}`}
       >
         <User className="w-4 h-4 mr-2" />
         Choose Profile
@@ -79,7 +79,7 @@ export const ProfileSwitcher = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className={`bg-white text-amber-800 border-amber-300 hover:bg-amber-50 hover:text-amber-900 font-medium ${className}`}
+          className={`bg-white text-purple-800 border-purple-300 hover:bg-purple-50 hover:text-purple-900 font-medium ${className}`}
         >
           <span className="mr-2 text-lg">{activeProfile.avatar}</span>
           <span className="hidden sm:inline">{activeProfile.nickname}</span>
@@ -87,20 +87,20 @@ export const ProfileSwitcher = ({
         </Button>
       </DropdownMenuTrigger>
       
-      <DropdownMenuContent align="end" className="w-64 bg-white border-amber-200">
-        <DropdownMenuLabel className="font-fredoka font-bold text-amber-900">
+      <DropdownMenuContent align="end" className="w-64 bg-white border-purple-200">
+        <DropdownMenuLabel className="font-fredoka font-bold text-purple-900">
           Switch Profile
         </DropdownMenuLabel>
         
-        <DropdownMenuSeparator className="bg-amber-200" />
+        <DropdownMenuSeparator className="bg-purple-200" />
         
         {/* Current Profile */}
-        <div className="px-2 py-3 bg-amber-50 border-l-4 border-amber-400">
+        <div className="px-2 py-3 bg-purple-50 border-l-4 border-purple-400">
           <div className="flex items-center gap-3">
             <span className="text-xl">{activeProfile.avatar}</span>
             <div className="flex-1">
-              <p className="font-medium text-amber-900">{activeProfile.nickname}</p>
-              <p className="text-xs text-amber-700">
+              <p className="font-medium text-purple-900">{activeProfile.nickname}</p>
+              <p className="text-xs text-purple-700">
                 {formatStats({
                   id: activeProfileId!,
                   nickname: activeProfile.nickname,
@@ -117,7 +117,7 @@ export const ProfileSwitcher = ({
           </div>
         </div>
         
-        <DropdownMenuSeparator className="bg-amber-200" />
+        <DropdownMenuSeparator className="bg-purple-200" />
         
         {/* Other Profiles */}
         {profiles
@@ -126,7 +126,7 @@ export const ProfileSwitcher = ({
             <DropdownMenuItem
               key={profile.id}
               onClick={() => handleProfileSelect(profile.id)}
-              className="cursor-pointer p-3 hover:bg-amber-50 focus:bg-amber-50"
+              className="cursor-pointer p-3 hover:bg-purple-50 focus:bg-purple-50"
             >
               <div className="flex items-center gap-3 w-full">
                 <span className="text-lg">{profile.avatar}</span>
@@ -143,10 +143,10 @@ export const ProfileSwitcher = ({
         {/* Add New Profile */}
         {profiles.length < 5 && (
           <>
-            <DropdownMenuSeparator className="bg-amber-200" />
+            <DropdownMenuSeparator className="bg-purple-200" />
             <DropdownMenuItem
               onClick={onCreateProfile}
-              className="cursor-pointer p-3 hover:bg-amber-50 focus:bg-amber-50 text-amber-800"
+              className="cursor-pointer p-3 hover:bg-purple-50 focus:bg-purple-50 text-purple-800"
             >
               <Plus className="w-4 h-4 mr-3" />
               <span className="font-medium">Add New Profile</span>
@@ -155,7 +155,7 @@ export const ProfileSwitcher = ({
         )}
         
         {/* Logout */}
-        <DropdownMenuSeparator className="bg-amber-200" />
+        <DropdownMenuSeparator className="bg-purple-200" />
         <DropdownMenuItem
           onClick={handleLogout}
           className="cursor-pointer p-3 hover:bg-red-50 focus:bg-red-50 text-red-600"

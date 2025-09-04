@@ -45,7 +45,7 @@ export const AchievementNotification = ({
         isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
       }`}
     >
-      <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 shadow-lg max-w-sm">
+      <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 shadow-lg max-w-sm">
         <div className="p-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
@@ -58,13 +58,13 @@ export const AchievementNotification = ({
               
               {/* Achievement Info */}
               <div className="text-center space-y-1">
-                <h3 className="font-fredoka font-bold text-amber-900 text-lg">
+                <h3 className="font-fredoka font-bold text-purple-900 text-lg">
                   Achievement Unlocked! 🎉
                 </h3>
-                <p className="font-semibold text-amber-800">
+                <p className="font-semibold text-purple-800">
                   {achievement.title}
                 </p>
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-purple-700">
                   {achievement.description}
                 </p>
               </div>
@@ -75,7 +75,7 @@ export const AchievementNotification = ({
               variant="ghost"
               size="sm"
               onClick={handleClose}
-              className="text-amber-600 hover:text-amber-800 hover:bg-amber-100 p-1 h-6 w-6"
+              className="text-purple-600 hover:text-purple-800 hover:bg-purple-100 p-1 h-6 w-6"
             >
               <X className="w-4 h-4" />
             </Button>

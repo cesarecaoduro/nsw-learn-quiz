@@ -78,20 +78,20 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
   const getGradeColor = (score: number): string => {
     if (score >= 90) return "bg-green-100 text-green-800 border-green-200";
     if (score >= 80) return "bg-blue-100 text-blue-800 border-blue-200";
-    if (score >= 70) return "bg-amber-100 text-amber-800 border-amber-200";
-    if (score >= 60) return "bg-orange-100 text-orange-800 border-orange-200";
+    if (score >= 70) return "bg-purple-100 text-purple-800 border-purple-200";
+    if (score >= 60) return "bg-pink-100 text-pink-800 border-pink-200";
     return "bg-gray-100 text-gray-800 border-gray-200";
   };
 
   if (showCreateForm) {
     return (
       <div className="w-full max-w-md mx-auto space-y-6">
-        <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200">
+        <Card className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-purple-200">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-fredoka font-bold text-amber-900">
+            <CardTitle className="text-2xl font-fredoka font-bold text-purple-800">
               {profiles.length === 0 ? "Welcome! 🌟" : "Create New Profile"}
             </CardTitle>
-            <p className="text-amber-800">
+            <p className="text-purple-600">
               {profiles.length === 0 
                 ? "Let's get started with your learning adventure!" 
                 : "Add another profile to track progress separately"
@@ -102,7 +102,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
           <CardContent className="space-y-6">
             {/* Nickname Input */}
             <div className="space-y-2">
-              <Label htmlFor="nickname" className="text-amber-900 font-medium">
+              <Label htmlFor="nickname" className="text-purple-800 font-medium">
                 Choose your name
               </Label>
               <Input
@@ -111,16 +111,16 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
                 onChange={(e) => setNewNickname(e.target.value)}
                 placeholder="Enter your name..."
                 maxLength={20}
-                className="bg-white border-amber-300 focus:border-amber-400 focus:ring-amber-400"
+                className="bg-white border-purple-300 focus:border-purple-400 focus:ring-purple-400"
               />
-              <p className="text-xs text-amber-700">
+              <p className="text-xs text-purple-600">
                 Letters, numbers, and spaces only (max 20 characters)
               </p>
             </div>
 
             {/* Avatar Selection */}
             <div className="space-y-3">
-              <Label className="text-amber-900 font-medium">Choose your avatar</Label>
+              <Label className="text-purple-800 font-medium">Choose your avatar</Label>
               <div className="grid grid-cols-8 gap-2">
                 {AVAILABLE_AVATARS.map((avatar) => (
                   <Button
@@ -128,8 +128,8 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
                     variant="outline"
                     className={`w-10 h-10 p-0 text-xl border-2 transition-all duration-200 ${
                       selectedAvatar === avatar
-                        ? "border-amber-400 bg-amber-100 scale-110"
-                        : "border-amber-200 hover:border-amber-300 hover:bg-amber-50"
+                        ? "border-purple-400 bg-purple-100 scale-110"
+                        : "border-purple-200 hover:border-purple-300 hover:bg-purple-50"
                     }`}
                     onClick={() => setSelectedAvatar(avatar)}
                   >
@@ -151,7 +151,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
               <Button
                 onClick={handleCreateProfile}
                 disabled={!newNickname.trim() || isCreating}
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-fredoka font-semibold"
+                className="w-full bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-fredoka font-semibold"
               >
                 {isCreating ? (
                   "Creating Profile..."
@@ -167,7 +167,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
                 <Button
                   variant="outline"
                   onClick={() => setShowCreateForm(false)}
-                  className="w-full bg-white text-amber-800 border-amber-300 hover:bg-amber-50 hover:text-amber-900 font-medium"
+                  className="w-full bg-white text-purple-800 border-purple-300 hover:bg-purple-50 hover:text-purple-900 font-medium"
                 >
                   Back to Profile Selection
                 </Button>
@@ -177,7 +177,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
                 <Button
                   variant="ghost"
                   onClick={onSkip}
-                  className="w-full text-amber-700 hover:text-amber-900 hover:bg-amber-50"
+                  className="w-full text-purple-600 hover:text-purple-800 hover:bg-purple-50"
                 >
                   Skip for now (no progress tracking)
                 </Button>
@@ -191,12 +191,12 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
-      <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200">
+      <Card className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-purple-200">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-fredoka font-bold text-amber-900">
+          <CardTitle className="text-2xl font-fredoka font-bold text-purple-800">
             Choose Your Profile 👋
           </CardTitle>
-          <p className="text-amber-800">
+          <p className="text-purple-600">
             Select a profile to continue your learning journey
           </p>
         </CardHeader>
@@ -207,7 +207,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
         {profiles.map((profile) => (
           <Card
             key={profile.id}
-            className="cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-lg border-2 border-amber-200 hover:border-amber-400 bg-white"
+            className="cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-lg border-2 border-purple-200 hover:border-purple-400 bg-white"
             onClick={() => onProfileSelected(profile.id)}
           >
             <CardContent className="p-6 text-center space-y-4">
@@ -219,7 +219,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
                 <h3 className="font-fredoka font-bold text-lg text-gray-900">
                   {profile.nickname}
                 </h3>
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-purple-600">
                   {formatLastActive(profile.lastActive)}
                 </p>
               </div>
@@ -227,7 +227,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
               {/* Stats */}
               <div className="space-y-2">
                 <div className="flex items-center justify-center gap-2">
-                  <Trophy className="w-4 h-4 text-amber-600" />
+                  <Trophy className="w-4 h-4 text-purple-500" />
                   <span className="text-sm font-medium text-gray-700">
                     {profile.totalQuizzes} quiz{profile.totalQuizzes !== 1 ? 'es' : ''}
                   </span>
@@ -242,7 +242,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
 
               {/* Continue Arrow */}
               <div className="flex justify-center">
-                <ArrowRight className="w-5 h-5 text-amber-600" />
+                <ArrowRight className="w-5 h-5 text-purple-500" />
               </div>
             </CardContent>
           </Card>
@@ -251,19 +251,19 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
         {/* Add New Profile Card */}
         {profiles.length < 5 && (
           <Card
-            className="cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-lg border-2 border-dashed border-amber-300 hover:border-amber-500 bg-white"
+            className="cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-lg border-2 border-dashed border-purple-300 hover:border-purple-500 bg-white"
             onClick={() => setShowCreateForm(true)}
           >
             <CardContent className="p-6 text-center space-y-4 flex flex-col justify-center min-h-[200px]">
               <MacOSPlusIcon 
                 size="xl" 
-                className="mx-auto text-amber-500 w-12 h-12"
+                className="mx-auto text-purple-500 w-12 h-12"
               />
               <div>
-                <h3 className="font-fredoka font-bold text-lg text-amber-900">
+                <h3 className="font-fredoka font-bold text-lg text-purple-800">
                   Add New Profile
                 </h3>
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-purple-600">
                   Create another learning profile
                 </p>
               </div>
@@ -278,7 +278,7 @@ export const ProfileSelector = ({ onProfileSelected, onSkip }: ProfileSelectorPr
           <Button
             variant="ghost"
             onClick={onSkip}
-            className="text-amber-700 hover:text-amber-900 hover:bg-amber-50"
+            className="text-purple-600 hover:text-purple-800 hover:bg-purple-50"
           >
             Skip profile setup (no progress tracking)
           </Button>

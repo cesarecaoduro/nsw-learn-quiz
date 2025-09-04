@@ -11,7 +11,7 @@ const subjectColors = {
   "English": "bg-purple-100 text-purple-800 border-purple-200",
   "Mathematics": "bg-blue-100 text-blue-800 border-blue-200", 
   "Science": "bg-green-100 text-green-800 border-green-200",
-  "History": "bg-orange-100 text-orange-800 border-orange-200",
+  "History": "bg-purple-100 text-purple-800 border-purple-200",
   "Geography": "bg-teal-100 text-teal-800 border-teal-200",
   "Creative Arts": "bg-pink-100 text-pink-800 border-pink-200",
   "Subject": "bg-gray-100 text-gray-800 border-gray-200"
@@ -47,21 +47,21 @@ export const QuizPreview = ({ quiz }: QuizPreviewProps) => {
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Quiz Header Preview */}
-        <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200">
+        <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200">
           <CardContent className="p-4 text-center">
-            <h3 className="font-fredoka font-bold text-lg text-amber-900 mb-1">
+            <h3 className="font-fredoka font-bold text-lg text-purple-900 mb-1">
               {quiz.name}
             </h3>
-            <div className="flex justify-center items-center gap-2 text-sm text-amber-700">
-              <Badge className="bg-amber-100 text-amber-800 border-amber-200">
+            <div className="flex justify-center items-center gap-2 text-sm text-purple-700">
+              <Badge className="bg-purple-100 text-purple-800 border-purple-200">
                 📊 Year {quiz.year}
               </Badge>
-              <Badge className="bg-amber-100 text-amber-800 border-amber-200">
+              <Badge className="bg-purple-100 text-purple-800 border-purple-200">
                 {quiz.questions.length} Questions
               </Badge>
             </div>
             {quiz.uploader && (
-              <p className="text-xs text-amber-600 mt-2">By {quiz.uploader}</p>
+              <p className="text-xs text-purple-600 mt-2">By {quiz.uploader}</p>
             )}
           </CardContent>
         </Card>
