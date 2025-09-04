@@ -38,32 +38,29 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-kid-rainbow-2 sticky top-0 z-50 shadow-2xl border-b-4 border-kid-yellow">
-        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
-          <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
-            
-            {/* Logo and Title */}
-            <div className="flex items-center justify-center sm:justify-start space-x-3">
-              <div className="bg-gradient-to-br from-kid-purple to-kid-pink p-2 sm:p-3 rounded-full shadow-xl animate-bounce">
-                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="bg-primary p-2 rounded-lg">
+                <BookOpen className="w-6 h-6 text-white" />
               </div>
-              <div className="text-center sm:text-left">
-                <h1 className="text-lg sm:text-xl lg:text-2xl font-fredoka font-black text-white drop-shadow-lg">
-                  🌈 NSW Quiz Fun! 🎉
+              <div>
+                <h1 className="text-lg sm:text-xl font-fredoka font-bold text-gray-900">
+                  NSW Quiz Fun 🌟
                 </h1>
-                <p className="text-xs sm:text-sm text-white/90 font-comic font-semibold">
-                  🎯 Learning Adventures • Years 1-6 ✨
+                <p className="text-sm text-gray-600 font-medium">
+                  Learning Adventures • Years 1-6
                 </p>
               </div>
             </div>
 
-            {/* Upload Button */}
             <Button 
               onClick={() => setShowUpload(true)}
-              className="w-full sm:w-auto bg-gradient-to-r from-kid-orange to-kid-red hover:from-kid-red hover:to-kid-orange text-white font-fredoka font-bold text-sm sm:text-base shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 rounded-full px-4 sm:px-6 py-3 border-2 border-white/30"
+              className="bg-primary hover:bg-primary/90 text-white font-medium shadow-sm"
             >
-              <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-              📚 Add New Quiz! ➕
+              <Plus className="w-4 h-4 mr-2" />
+              Add Quiz
             </Button>
           </div>
         </div>

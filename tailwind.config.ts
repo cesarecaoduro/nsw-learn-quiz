@@ -48,15 +48,6 @@ export default {
 					DEFAULT: 'hsl(var(--info))',
 					foreground: 'hsl(var(--info-foreground))'
 				},
-				kid: {
-					pink: 'hsl(var(--kid-pink))',
-					purple: 'hsl(var(--kid-purple))',
-					blue: 'hsl(var(--kid-blue))',
-					green: 'hsl(var(--kid-green))',
-					orange: 'hsl(var(--kid-orange))',
-					yellow: 'hsl(var(--kid-yellow))',
-					red: 'hsl(var(--kid-red))'
-				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
@@ -87,14 +78,6 @@ export default {
 			fontFamily: {
 				'fredoka': ['Fredoka', 'sans-serif'],
 				'comic': ['Comic Neue', 'cursive'],
-			},
-			backgroundImage: {
-				'kid-rainbow-1': 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
-				'kid-rainbow-2': 'linear-gradient(45deg, #a8e6cf, #ffd93d)',
-				'kid-rainbow-3': 'linear-gradient(45deg, #ff8a80, #ea80fc)',
-				'kid-rainbow-4': 'linear-gradient(45deg, #82b1ff, #b388ff)',
-				'kid-sunset': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
-				'kid-ocean': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -167,14 +150,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'bounce-in': 'bounce-in 0.6s ease-out',
-				'wiggle': 'wiggle 1s ease-in-out infinite',
-				'pulse-fun': 'pulse-fun 2s ease-in-out infinite',
-				'rainbow-glow': 'rainbow-glow 3s ease-in-out infinite'
-			},
-			borderWidth: {
-				'3': '3px',
+				'fade-in': 'fade-in 0.3s ease-out'
 			}
 		}
 	},
