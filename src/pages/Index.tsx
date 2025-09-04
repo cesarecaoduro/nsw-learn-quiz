@@ -38,29 +38,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b-4 border-fun-purple bg-gradient-to-r from-blue-50 to-purple-50 sticky top-0 z-10 shadow-sm">
-        <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-5">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <div className="bg-gradient-to-r from-fun-purple to-fun-pink p-2 rounded-2xl shadow-lg">
-                <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+      <header className="bg-kid-rainbow-2 sticky top-0 z-50 shadow-2xl border-b-4 border-kid-yellow">
+        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
+          <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+            
+            {/* Logo and Title */}
+            <div className="flex items-center justify-center sm:justify-start space-x-3">
+              <div className="bg-gradient-to-br from-kid-purple to-kid-pink p-2 sm:p-3 rounded-full shadow-xl animate-bounce">
+                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
               </div>
-              <div className="min-w-0 flex-1">
-                <h1 className="text-lg sm:text-xl lg:text-2xl font-fredoka font-bold text-slate-700">
-                  🌟 NSW Quiz Adventure
+              <div className="text-center sm:text-left">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-fredoka font-black text-white drop-shadow-lg">
+                  🌈 NSW Quiz Fun! 🎉
                 </h1>
-                <p className="text-xs sm:text-sm text-slate-600 font-comic">
-                  Learning is fun! ✨ Years 1-6
+                <p className="text-xs sm:text-sm text-white/90 font-comic font-semibold">
+                  🎯 Learning Adventures • Years 1-6 ✨
                 </p>
               </div>
             </div>
+
+            {/* Upload Button */}
             <Button 
               onClick={() => setShowUpload(true)}
-              className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm bg-gradient-to-r from-fun-orange to-fun-yellow hover:from-fun-yellow hover:to-fun-orange text-white font-fredoka font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 rounded-2xl"
-              size="sm"
+              className="w-full sm:w-auto bg-gradient-to-r from-kid-orange to-kid-red hover:from-kid-red hover:to-kid-orange text-white font-fredoka font-bold text-sm sm:text-base shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 rounded-full px-4 sm:px-6 py-3 border-2 border-white/30"
             >
-              <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
-              📚 Add Quiz
+              <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              📚 Add New Quiz! ➕
             </Button>
           </div>
         </div>

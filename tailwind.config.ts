@@ -48,13 +48,14 @@ export default {
 					DEFAULT: 'hsl(var(--info))',
 					foreground: 'hsl(var(--info-foreground))'
 				},
-				fun: {
-					pink: 'hsl(var(--fun-pink))',
-					orange: 'hsl(var(--fun-orange))',
-					blue: 'hsl(var(--fun-blue))',
-					green: 'hsl(var(--fun-green))',
-					purple: 'hsl(var(--fun-purple))',
-					yellow: 'hsl(var(--fun-yellow))'
+				kid: {
+					pink: 'hsl(var(--kid-pink))',
+					purple: 'hsl(var(--kid-purple))',
+					blue: 'hsl(var(--kid-blue))',
+					green: 'hsl(var(--kid-green))',
+					orange: 'hsl(var(--kid-orange))',
+					yellow: 'hsl(var(--kid-yellow))',
+					red: 'hsl(var(--kid-red))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
@@ -88,10 +89,12 @@ export default {
 				'comic': ['Comic Neue', 'cursive'],
 			},
 			backgroundImage: {
-				'gradient-rainbow': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-				'gradient-sunset': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-				'gradient-ocean': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-				'gradient-forest': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+				'kid-rainbow-1': 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+				'kid-rainbow-2': 'linear-gradient(45deg, #a8e6cf, #ffd93d)',
+				'kid-rainbow-3': 'linear-gradient(45deg, #ff8a80, #ea80fc)',
+				'kid-rainbow-4': 'linear-gradient(45deg, #82b1ff, #b388ff)',
+				'kid-sunset': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+				'kid-ocean': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -148,6 +151,17 @@ export default {
 						transform: 'scale(1.05)',
 						opacity: '0.8'
 					}
+				},
+				'rainbow-glow': {
+					'0%, 100%': {
+						'box-shadow': '0 0 20px #ff6b6b, 0 0 40px #4ecdc4, 0 0 60px #45b7d1'
+					},
+					'33%': {
+						'box-shadow': '0 0 20px #96ceb4, 0 0 40px #ffeaa7, 0 0 60px #fab1a0'
+					},
+					'66%': {
+						'box-shadow': '0 0 20px #a29bfe, 0 0 40px #fd79a8, 0 0 60px #e17055'
+					}
 				}
 			},
 			animation: {
@@ -156,7 +170,11 @@ export default {
 				'fade-in': 'fade-in 0.3s ease-out',
 				'bounce-in': 'bounce-in 0.6s ease-out',
 				'wiggle': 'wiggle 1s ease-in-out infinite',
-				'pulse-fun': 'pulse-fun 2s ease-in-out infinite'
+				'pulse-fun': 'pulse-fun 2s ease-in-out infinite',
+				'rainbow-glow': 'rainbow-glow 3s ease-in-out infinite'
+			},
+			borderWidth: {
+				'3': '3px',
 			}
 		}
 	},
