@@ -6,6 +6,8 @@ import { QuestionCard } from "./QuestionCard";
 import { QuizResults } from "./QuizResults";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useProgressOptional } from "@/contexts/ProgressContext";
+import { QuizHistory } from "@/types/progress";
 
 interface QuizAppProps {
   availableQuizzes: Quiz[];
@@ -22,6 +24,10 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
+  const [quizStartTime, setQuizStartTime] = useState<number>(0);
+
+  // Optional progress tracking (won't crash if no profile selected)
+  const progress = useProgressOptional();
 
   // Get unique years from available quizzes
   const availableYears = Array.from(new Set(availableQuizzes.map(quiz => quiz.year))).sort();
@@ -107,6 +113,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     setUserAnswers([]);
     setShowNextButton(false);
     setHasAnswered(false);
+    setQuizStartTime(Date.now()); // Track start time for progress
   };
 
   const handleAnswer = (answer: UserAnswer) => {
@@ -119,7 +126,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     setShowNextButton(true); // Show immediately, no delay
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (!selectedQuiz) return;
 
     if (currentQuestionIndex < selectedQuiz.questions.length - 1) {
@@ -127,6 +134,33 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
       setShowNextButton(false);
       setHasAnswered(false);
     } else {
+      // Quiz completed - save progress if profile is active
+      if (progress?.activeProfileId) {
+        const results = calculateResults(userAnswers, selectedQuiz);
+        const timeSpent = Math.round((Date.now() - quizStartTime) / 1000); // in seconds
+        
+        const subjects = Array.from(new Set(selectedQuiz.questions.map(q => q.subject)));
+        
+        const quizHistory: Omit<QuizHistory, 'id'> = {
+          quizId: selectedQuiz.id,
+          quizName: selectedQuiz.name,
+          score: results.percentage,
+          grade: results.grade,
+          totalQuestions: results.totalQuestions,
+          correctAnswers: results.correctAnswers,
+          completedAt: Date.now(),
+          timeSpent: timeSpent,
+          subjects: subjects,
+          subjectBreakdown: results.subjectBreakdown
+        };
+
+        try {
+          await progress.addQuizResult(quizHistory);
+        } catch (error) {
+          console.error('Failed to save quiz progress:', error);
+        }
+      }
+      
       setCurrentState('results');
     }
   };
@@ -138,6 +172,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
       setUserAnswers([]);
       setShowNextButton(false);
       setHasAnswered(false);
+      setQuizStartTime(Date.now()); // Reset timer for retry
     }
   };
 
