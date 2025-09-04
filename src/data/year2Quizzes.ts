@@ -5,6 +5,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-english-literature",
     name: "English Language & Literature",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -92,6 +93,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-number-algebra",
     name: "Number & Counting",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -179,6 +181,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-measurement-geometry",
     name: "Measurement & Geometry",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -274,6 +277,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-living-world",
     name: "Science - Living World",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -369,6 +373,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-physical-world",
     name: "Science - Physical World",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -456,6 +461,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-australian-history",
     name: "Australian History",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -543,6 +549,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-australian-geography",
     name: "Australian Geography",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -630,6 +637,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-mixed-review-1",
     name: "Mixed Review 1",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -717,6 +725,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-mixed-review-2",
     name: "Mixed Review 2",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -804,6 +813,7 @@ export const year2Quizzes: Quiz[] = [
     id: "year2-challenge-quiz",
     name: "Challenge Quiz",
     year: "2",
+    uploader: "Admin",
     questions: [
       {
         id: 1,

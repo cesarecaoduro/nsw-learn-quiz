@@ -5,6 +5,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-english-literature",
     name: "English Language & Literature",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -124,6 +125,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-number-algebra",
     name: "Number & Algebra",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -235,6 +237,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-measurement-geometry",
     name: "Measurement & Geometry",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -346,6 +349,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-living-world",
     name: "Science - Living World",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -457,6 +461,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-physical-world",
     name: "Science - Physical World",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -568,6 +573,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-australian-history",
     name: "Australian History",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -687,6 +693,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-australian-geography",
     name: "Australian Geography",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -798,6 +805,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-mixed-review-1",
     name: "Mixed Review 1",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -885,6 +893,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-mixed-review-2",
     name: "Mixed Review 2",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -972,6 +981,7 @@ export const year6Quizzes: Quiz[] = [
     id: "year6-challenge-quiz",
     name: "Challenge Quiz",
     year: "6",
+    uploader: "Admin",
     questions: [
       {
         id: 1,

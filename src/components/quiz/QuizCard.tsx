@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Quiz } from "@/types/quiz";
-import { Star } from "lucide-react";
+import { Star, User } from "lucide-react";
 
 interface QuizCardProps {
   quiz: Quiz;
@@ -62,10 +62,18 @@ export const QuizCard = ({ quiz, onSelect }: QuizCardProps) => {
         
         <Button 
           onClick={() => onSelect(quiz)} 
-          className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md transition-all duration-200 hover:shadow-lg"
+          className="w-full mb-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md transition-all duration-200 hover:shadow-lg"
         >
           Start Quiz 🚀
         </Button>
+        
+        {quiz.uploader && (
+          <div className="flex justify-center">
+            <Badge variant="outline" className="text-xs text-amber-600 bg-amber-50 border-amber-200">
+              {quiz.uploader}
+            </Badge>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

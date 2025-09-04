@@ -5,6 +5,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-reading-writing",
     name: "Reading and Writing",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -92,6 +93,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-numbers-counting",
     name: "Numbers and Counting",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -179,6 +181,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-shapes-measurement",
     name: "Shapes and Measurement",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -266,6 +269,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-living-things",
     name: "Living Things",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -353,6 +357,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-materials-objects",
     name: "Materials and Objects",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -440,6 +445,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-my-place",
     name: "My Place",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -527,6 +533,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-past-present",
     name: "Past and Present",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -614,6 +621,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-mixed-review-1",
     name: "Mixed Review 1",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -701,6 +709,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-mixed-review-2",
     name: "Mixed Review 2",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -788,6 +797,7 @@ export const year1Quizzes: Quiz[] = [
     id: "year1-fun-challenge",
     name: "Fun Challenge Quiz",
     year: "1",
+    uploader: "Admin",
     questions: [
       {
         id: 1,

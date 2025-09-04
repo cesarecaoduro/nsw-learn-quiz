@@ -139,7 +139,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'selection') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
+      <div className="min-h-screen bg-white">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-10">
@@ -245,7 +245,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
+      <div className="min-h-screen bg-white">
         {/* Navigation */}
         <div className="bg-amber-50 border-b border-amber-200 p-4">
           <div className="container mx-auto max-w-4xl">

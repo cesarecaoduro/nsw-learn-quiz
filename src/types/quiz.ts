@@ -13,6 +13,7 @@ export interface Quiz {
   name: string;
   year: string;
   questions: Question[];
+  uploader?: string;
 }
 
 export interface QuizResult {

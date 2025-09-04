@@ -15,12 +15,13 @@ interface QuizUploadProps {
 export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
   const [quizName, setQuizName] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
+  const [uploaderName, setUploaderName] = useState("");
   const [quizJson, setQuizJson] = useState("");
   const { toast } = useToast();
 
   const handleUpload = () => {
     try {
-      if (!quizName.trim() || !selectedYear || !quizJson.trim()) {
+      if (!quizName.trim() || !selectedYear || !uploaderName.trim() || !quizJson.trim()) {
         toast({
           title: "Missing Information",
           description: "Please fill in all fields",
@@ -48,6 +49,7 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
         id: `quiz-${Date.now()}`,
         name: quizName,
         year: selectedYear,
+        uploader: uploaderName,
         questions: questions.map((q, index) => ({
           ...q,
           id: index + 1
@@ -59,6 +61,7 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
       // Reset form
       setQuizName("");
       setSelectedYear("");
+      setUploaderName("");
       setQuizJson("");
 
       toast({
@@ -105,6 +108,17 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
               ))}
             </SelectContent>
           </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="uploader-name" className="text-sm font-medium text-amber-800">Your Name</Label>
+          <Input
+            id="uploader-name"
+            placeholder="e.g., Ms. Smith"
+            value={uploaderName}
+            onChange={(e) => setUploaderName(e.target.value)}
+            className="text-sm border-amber-200 focus:border-amber-400 focus:ring-amber-400"
+          />
         </div>
 
         <div className="space-y-2">

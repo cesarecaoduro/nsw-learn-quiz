@@ -5,6 +5,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-letters-sounds",
     name: "Letters and Sounds",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -76,6 +77,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-counting-numbers",
     name: "Counting and Numbers",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -147,6 +149,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-shapes-patterns",
     name: "Shapes and Patterns",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -218,6 +221,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-my-world",
     name: "My World",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -289,6 +293,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-colors-senses",
     name: "Colors and Our Senses",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -360,6 +365,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-family-community",
     name: "Family and Community",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -431,6 +437,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-time-seasons",
     name: "Time and Seasons",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -502,6 +509,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-feelings-friends",
     name: "Feelings and Friendship",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -573,6 +581,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-mixed-review-1",
     name: "Mixed Review 1",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
@@ -644,6 +653,7 @@ export const kindergartenQuizzes: Quiz[] = [
     id: "kindergarten-mixed-review-2",
     name: "Mixed Review 2",
     year: "K",
+    uploader: "Admin",
     questions: [
       {
         id: 1,
