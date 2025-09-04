@@ -94,38 +94,38 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
 
   return (
     <Card className="w-full max-w-4xl mx-auto shadow-lg border border-gray-200 rounded-xl bg-white">
-      <CardHeader className="bg-gray-50 border-b border-gray-100">
-        <div className="flex justify-center mb-4">
-          <Badge className={`font-medium border ${subjectInfo.color}`}>
+      <CardHeader className="bg-gray-50 border-b border-gray-100 p-4 sm:p-6">
+        <div className="flex justify-center mb-3">
+          <Badge className={`font-medium border text-xs sm:text-sm px-2 py-1 ${subjectInfo.color}`}>
             {subjectInfo.emoji} {question.subject}
           </Badge>
         </div>
         
-        <h2 className="text-xl sm:text-2xl font-fredoka font-semibold leading-relaxed text-center text-gray-900">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-fredoka font-semibold leading-relaxed text-center text-gray-900 px-2">
           {question.question}
         </h2>
       </CardHeader>
       
-      <CardContent className="p-6">
-        <div className="grid gap-4">
+      <CardContent className="p-3 sm:p-6">
+        <div className="grid gap-3 sm:gap-4">
           {question.options.map((option, index) => (
             <Button
               key={index}
               variant="outline"
-              className={`justify-start text-left h-auto p-4 text-base rounded-lg ${getOptionStyle(index)}`}
+              className={`justify-start text-left h-auto p-3 sm:p-4 text-sm sm:text-base rounded-lg ${getOptionStyle(index)}`}
               onClick={() => handleOptionSelect(index)}
               disabled={selectedOption !== null}
             >
-              <div className="flex items-center justify-between w-full gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="bg-gray-100 text-gray-700 font-fredoka font-bold text-lg w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+              <div className="flex items-start justify-between w-full gap-2 sm:gap-4">
+                <div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="bg-gray-100 text-gray-700 font-fredoka font-bold text-sm sm:text-lg w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     {String.fromCharCode(65 + index)}
                   </div>
-                  <span className="text-left leading-relaxed font-medium text-gray-900">
+                  <span className="text-left leading-relaxed font-medium text-gray-900 break-words flex-1">
                     {option}
                   </span>
                 </div>
-                <div className="shrink-0">
+                <div className="shrink-0 mt-1">
                   {getOptionIcon(index)}
                 </div>
               </div>
