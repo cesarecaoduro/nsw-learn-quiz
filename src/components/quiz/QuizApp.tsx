@@ -260,7 +260,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     return (
       <div className="bg-white">
         {/* Navigation */}
-        <div className="bg-amber-50 border-b border-amber-200 p-4">
+        <div className="bg-white border-b border-amber-200 p-4">
           <div className="container mx-auto max-w-4xl">
             <div className="flex justify-between">
               <Button 
@@ -282,7 +282,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
 
         {/* Progress */}
-        <div className="bg-amber-50 border-b border-amber-100 p-4">
+        <div className="bg-white border-b border-amber-200 p-4">
           <div className="container mx-auto max-w-4xl">
             <ProgressBar 
               current={currentQuestionIndex + 1} 

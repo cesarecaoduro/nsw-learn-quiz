@@ -123,6 +123,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-white text-foreground font-sans;
+  }
+  
+  html {
+    background-color: white;
   }
 }
