@@ -107,13 +107,13 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
           </h2>
         </CardHeader>
         
-        <CardContent className="p-4 sm:p-6">
-          <div className="space-y-3 sm:space-y-4">
+        <CardContent className="p-3 sm:p-4">
+          <div className="space-y-2 sm:space-y-3">
             {question.options.map((option, index) => (
               <Button
                 key={index}
                 variant="outline"
-                className={`w-full justify-start text-left h-auto p-3 sm:p-4 text-sm sm:text-base rounded-lg whitespace-normal ${getOptionStyle(index)}`}
+                className={`w-full justify-start text-left h-auto p-2 sm:p-3 text-sm sm:text-base rounded-lg whitespace-normal ${getOptionStyle(index)}`}
                 onClick={() => handleOptionSelect(index)}
                 disabled={selectedOption !== null}
               >
@@ -135,7 +135,7 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
           </div>
 
           {showExplanation && (
-            <div className={`mt-6 p-5 rounded-lg border-2 ${selectedOption === question.correct ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+            <div className={`mt-4 p-4 rounded-lg border-2 ${selectedOption === question.correct ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
               <div className="flex items-center gap-3 mb-3">
                 {selectedOption === question.correct ? (
                   <>
@@ -154,14 +154,14 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
                 )}
               </div>
               
-              <div className="space-y-3">
-                <div className="bg-white rounded-lg p-4 border border-gray-200">
+              <div className="space-y-2">
+                <div className="bg-white rounded-lg p-3 border border-gray-200">
                   <p className="font-medium text-gray-900 break-words">
                     <strong>Correct answer:</strong> {String.fromCharCode(65 + question.correct)}. {question.options[question.correct]}
                   </p>
                 </div>
                 
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
                   <p className="text-gray-800 text-sm leading-relaxed break-words">
                     <strong>Explanation:</strong> {question.explanation}
                   </p>

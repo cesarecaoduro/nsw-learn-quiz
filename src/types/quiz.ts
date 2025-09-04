@@ -22,6 +22,11 @@ export interface QuizResult {
   percentage: number;
   grade: string;
   subjectBreakdown: { [key: string]: { correct: number; total: number } };
+  wrongAnswers: Array<{
+    question: Question;
+    userAnswer: number;
+    correctAnswer: number;
+  }>;
 }
 
 export interface UserAnswer {

@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { QuizResult } from "@/types/quiz";
-import { Trophy, Star, Sparkles, PartyPopper } from "lucide-react";
+import { Trophy, Star, Sparkles, XCircle, CheckCircle } from "lucide-react";
 
 interface QuizResultsProps {
   result: QuizResult;
@@ -52,6 +53,18 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
     return emojis[subject] || "📝";
   };
 
+  const getSubjectColors = (subject: string) => {
+    const colors: { [key: string]: string } = {
+      "English": "bg-purple-100 text-purple-800 border-purple-200",
+      "Mathematics": "bg-blue-100 text-blue-800 border-blue-200", 
+      "Science": "bg-green-100 text-green-800 border-green-200",
+      "History": "bg-orange-100 text-orange-800 border-orange-200",
+      "Geography": "bg-teal-100 text-teal-800 border-teal-200",
+      "Creative Arts": "bg-pink-100 text-pink-800 border-pink-200"
+    };
+    return colors[subject] || "bg-gray-100 text-gray-800 border-gray-200";
+  };
+
   return (
     <div className="w-full max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in">
       {/* Main Results Card */}
@@ -93,53 +106,78 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
         </CardHeader>
       </Card>
 
-      {/* Subject Breakdown */}
-      <Card className="rounded-3xl border-2 border-slate-200">
-        <CardHeader className="px-4 sm:px-8 py-6 bg-gradient-to-r from-slate-50 to-blue-50 rounded-t-3xl">
-          <CardTitle className="text-xl sm:text-2xl font-fredoka font-bold text-slate-700 text-center">
-            ✨ Your Learning Journey
-          </CardTitle>
-        </CardHeader>
-        
-        <CardContent className="px-4 sm:px-8 py-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {Object.entries(result.subjectBreakdown).map(([subject, scores]) => (
-              <div key={subject} className="text-center p-4 sm:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border-2 border-slate-100 hover:scale-105 transition-transform duration-200">
-                <div className="text-2xl sm:text-3xl mb-2">
-                  {getSubjectEmoji(subject)}
+
+      {/* Wrong Answers Review */}
+      {result.wrongAnswers.length > 0 && (
+        <Card className="rounded-3xl border-2 border-red-200">
+          <CardHeader className="px-4 sm:px-8 py-6 bg-gradient-to-r from-red-50 to-pink-50 rounded-t-3xl">
+            <CardTitle className="text-xl sm:text-2xl font-fredoka font-bold text-red-800 text-center">
+              📚 Let's Learn from Mistakes!
+            </CardTitle>
+            <p className="text-center text-red-600 font-medium mt-2">
+              Review these questions to improve your understanding
+            </p>
+          </CardHeader>
+          
+          <CardContent className="px-4 sm:px-8 py-6 space-y-4">
+            {result.wrongAnswers.map((wrongAnswer, index) => (
+              <div key={index} className="bg-white rounded-xl border-2 border-red-100 p-4 space-y-3">
+                <div className="flex items-start gap-3">
+                  <Badge className={`shrink-0 text-xs font-medium border ${getSubjectColors(wrongAnswer.question.subject)}`}>
+                    {getSubjectEmoji(wrongAnswer.question.subject)} {wrongAnswer.question.subject}
+                  </Badge>
                 </div>
-                <div className="font-fredoka font-bold text-slate-700 text-sm sm:text-base mb-2">
-                  {subject}
+                
+                <h3 className="font-fredoka font-semibold text-gray-900 text-base leading-relaxed">
+                  {wrongAnswer.question.question}
+                </h3>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 p-3 bg-red-50 border-2 border-red-200 rounded-lg">
+                    <XCircle className="w-5 h-5 text-red-600 shrink-0" />
+                    <div className="flex-1">
+                      <span className="text-sm font-medium text-red-700">Your answer:</span>
+                      <div className="font-medium text-red-800">
+                        {String.fromCharCode(65 + wrongAnswer.userAnswer)}. {wrongAnswer.question.options[wrongAnswer.userAnswer]}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-green-50 border-2 border-green-200 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
+                    <div className="flex-1">
+                      <span className="text-sm font-medium text-green-700">Correct answer:</span>
+                      <div className="font-medium text-green-800">
+                        {String.fromCharCode(65 + wrongAnswer.correctAnswer)}. {wrongAnswer.question.options[wrongAnswer.correctAnswer]}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-2xl sm:text-3xl font-fredoka font-black text-fun-purple">
-                  {scores.correct}/{scores.total}
-                </div>
-                <div className="flex justify-center mt-1">
-                  {Array.from({ length: scores.total }).map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className={`w-3 h-3 ${i < scores.correct ? 'text-fun-yellow fill-current' : 'text-slate-300'}`} 
-                    />
-                  ))}
+                
+                <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                  <span className="text-sm font-medium text-blue-700">Explanation:</span>
+                  <p className="text-blue-800 text-sm mt-1 leading-relaxed">
+                    {wrongAnswer.question.explanation}
+                  </p>
                 </div>
               </div>
             ))}
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 px-4 sm:px-0">
         <Button 
           onClick={onTryAgain}
-          className="w-full sm:w-auto bg-gradient-to-r from-fun-green to-fun-blue hover:from-fun-blue hover:to-fun-green text-white font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+          className="w-full sm:w-auto bg-gradient-to-r from-blue-300 to-purple-300 hover:from-blue-400 hover:to-purple-400 text-gray-800 font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-blue-200"
         >
           🔄 Try Again!
         </Button>
         
         <Button 
           onClick={onNewQuiz}
-          className="w-full sm:w-auto bg-gradient-to-r from-fun-orange to-fun-yellow hover:from-fun-yellow hover:to-fun-orange text-white font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+          className="w-full sm:w-auto bg-gradient-to-r from-pink-300 to-rose-300 hover:from-pink-400 hover:to-rose-400 text-gray-800 font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-pink-200"
         >
           🚀 New Adventure!
         </Button>

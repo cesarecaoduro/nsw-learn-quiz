@@ -62,8 +62,13 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     else if (percentage >= 70) grade = 'C';
     else if (percentage >= 60) grade = 'D';
 
-    // Calculate subject breakdown
+    // Calculate subject breakdown and collect wrong answers
     const subjectBreakdown: { [key: string]: { correct: number; total: number } } = {};
+    const wrongAnswers: Array<{
+      question: Question;
+      userAnswer: number;
+      correctAnswer: number;
+    }> = [];
     
     quiz.questions.forEach((question, index) => {
       const subject = question.subject;
@@ -75,6 +80,13 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
       const userAnswer = answers[index];
       if (userAnswer && userAnswer.isCorrect) {
         subjectBreakdown[subject].correct++;
+      } else if (userAnswer) {
+        // Collect wrong answers
+        wrongAnswers.push({
+          question: question,
+          userAnswer: userAnswer.selectedOption,
+          correctAnswer: question.correct
+        });
       }
     });
 
@@ -83,7 +95,8 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
       correctAnswers,
       percentage,
       grade,
-      subjectBreakdown
+      subjectBreakdown,
+      wrongAnswers
     };
   };
 
@@ -139,7 +152,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'selection') {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="bg-white">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-10">
@@ -245,7 +258,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
-      <div className="min-h-screen bg-white">
+      <div className="bg-white">
         {/* Navigation */}
         <div className="bg-amber-50 border-b border-amber-200 p-4">
           <div className="container mx-auto max-w-4xl">
@@ -279,7 +292,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
         
         {/* Question */}
-        <div className="container mx-auto px-2 sm:px-4 py-6 max-w-4xl">
+        <div className="container mx-auto px-2 sm:px-4 py-4 max-w-4xl">
           <QuestionCard
             key={`question-${currentQuestionIndex}-${selectedQuiz.id}`}
             question={currentQuestion}
@@ -288,8 +301,8 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
           />
 
           {/* Next Button */}
-          <div className="flex justify-center mt-8 px-4">
-            {showNextButton && (
+          <div className="flex justify-center mt-6 px-4 min-h-[4rem] items-center">
+            {showNextButton ? (
               <Button 
                 onClick={handleNextQuestion}
                 className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium px-6 sm:px-8 py-3 shadow-lg"
@@ -297,6 +310,10 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
               >
                 {isLastQuestion ? 'Finish Quiz 🏆' : 'Next Question →'}
               </Button>
+            ) : (
+              <div className="text-amber-600 text-sm font-medium">
+                {hasAnswered ? 'Loading...' : 'Select an answer to continue'}
+              </div>
             )}
           </div>
         </div>
@@ -308,12 +325,14 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const results = calculateResults(userAnswers, selectedQuiz);
     
     return (
-      <div className="container mx-auto px-4 py-8">
-        <QuizResults
-          result={results}
-          onTryAgain={handleTryAgain}
-          onNewQuiz={handleNewQuiz}
-        />
+      <div className="bg-white">
+        <div className="container mx-auto px-4 py-8">
+          <QuizResults
+            result={results}
+            onTryAgain={handleTryAgain}
+            onNewQuiz={handleNewQuiz}
+          />
+        </div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { QuizApp } from "@/components/quiz/QuizApp";
 import { QuizUpload } from "@/components/quiz/QuizUpload";
+import { Footer } from "@/components/layout/Footer";
 import { sampleQuizzes } from "@/data/allQuizzes";
 import { Quiz } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
@@ -17,8 +18,8 @@ const Index = () => {
 
   if (showUpload) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 p-3 sm:p-4">
-        <div className="container mx-auto py-4 sm:py-8">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 p-3 sm:p-4 flex flex-col">
+        <div className="container mx-auto py-4 sm:py-8 flex-1">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-900 font-fredoka">Upload New Quiz 📚</h1>
             <Button 
@@ -32,12 +33,13 @@ const Index = () => {
           </div>
           <QuizUpload onQuizUploaded={handleQuizUploaded} />
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <header className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-200 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -66,7 +68,11 @@ const Index = () => {
         </div>
       </header>
       
-      <QuizApp availableQuizzes={quizzes} />
+      <div className="flex-1">
+        <QuizApp availableQuizzes={quizzes} />
+      </div>
+      
+      <Footer />
     </div>
   );
 };
