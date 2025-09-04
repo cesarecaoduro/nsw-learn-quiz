@@ -17,7 +17,9 @@ NSW Quiz Fun is an educational web application that provides interactive quizzes
 ### 🎮 Interactive Experience
 - **Modern UI/UX**: Clean, child-friendly interface with Apple macOS-inspired design
 - **Real-time Feedback**: Immediate results and explanations for each answer
-- **Progress Tracking**: Visual progress bars and detailed performance analytics
+- **Multi-Profile Support**: Individual progress tracking for multiple children/students
+- **Achievement System**: Gamified learning with unlockable achievements and badges
+- **Progress Analytics**: Detailed statistics and performance tracking by subject
 - **Engaging Animations**: Smooth transitions and interactive elements
 
 ### 🎨 Design System
@@ -27,18 +29,25 @@ NSW Quiz Fun is an educational web application that provides interactive quizzes
 - **Accessibility**: High contrast ratios and keyboard navigation support
 
 ### 📊 Advanced Features
+- **Multi-Profile System**: Support for up to 5 individual profiles per device
+- **Persistent Progress**: Client-side data storage with no authentication required
+- **Achievement Unlocking**: Real-time notifications for learning milestones
+- **Progress Dashboard**: Comprehensive analytics with subject-wise performance
+- **Quiz History**: Track all completed quizzes with detailed results
+- **Current Streak**: Monitor daily learning consistency
 - **Detailed Results**: Grade-based scoring with performance breakdown by subject
 - **Learning Analytics**: Review incorrect answers with detailed explanations
-- **Mistake Learning**: Dedicated section to learn from wrong answers
 - **Filter & Search**: Find quizzes by year level and subject
+- **Data Privacy**: All data stored locally - no external servers or tracking
 
 ## 🛠 Technology Stack
 
 ### Frontend
-- **React 18** - Modern UI framework with hooks
+- **React 18** - Modern UI framework with hooks and Context API
 - **TypeScript** - Type-safe JavaScript for better development experience
 - **Tailwind CSS** - Utility-first CSS framework for rapid styling
 - **Vite** - Fast build tool and development server
+- **Zod** - Runtime type validation for data security
 
 ### UI Components
 - **shadcn/ui** - High-quality, accessible component library
@@ -49,6 +58,12 @@ NSW Quiz Fun is an educational web application that provides interactive quizzes
 - **ESLint** - Code linting and quality assurance
 - **PostCSS** - CSS preprocessing and optimization
 - **Git** - Version control
+
+### Data & Security
+- **localStorage** - Client-side data persistence
+- **Base64 Encoding** - Secure data storage without external dependencies
+- **Input Sanitization** - XSS prevention and data validation
+- **Schema Validation** - Runtime type checking with Zod
 
 ## 🚀 Getting Started
 
@@ -77,21 +92,32 @@ npm run preview
 ```
 
 ### Development URLs
-- **Development**: http://localhost:5173
+- **Development**: http://localhost:8080
 - **Production**: https://nsw-learn-quiz.lovable.app
 
 ## 📱 Usage
 
 ### For Students
-1. **Select Quiz**: Choose your year level and subject
-2. **Take Quiz**: Answer questions at your own pace
-3. **Get Results**: See immediate feedback and grades
-4. **Learn More**: Review explanations for incorrect answers
+1. **Create Profile**: Set up your personal learning profile with avatar
+2. **Select Quiz**: Choose your year level and subject
+3. **Take Quiz**: Answer questions at your own pace
+4. **Get Results**: See immediate feedback and grades
+5. **Unlock Achievements**: Earn badges for learning milestones
+6. **Track Progress**: Monitor your improvement over time
+7. **Learn More**: Review explanations for incorrect answers
 
 ### For Educators
 1. **Browse Content**: Explore available quizzes by curriculum area
-2. **Assign Practice**: Recommend specific quizzes to students
-3. **Monitor Progress**: Review student performance and learning gaps
+2. **Multiple Profiles**: Support individual tracking for each student
+3. **Assign Practice**: Recommend specific quizzes to students
+4. **Monitor Progress**: Review student performance and learning gaps
+5. **Achievement Tracking**: Celebrate student milestones and progress
+
+### For Families
+1. **Multi-Child Support**: Create separate profiles for each child
+2. **Safe Learning**: No registration or personal data collection required
+3. **Progress Sharing**: View each child's learning journey and achievements
+4. **Data Control**: All information stored locally on your device
 
 ## 🎨 Design Highlights
 
@@ -147,8 +173,12 @@ This project is created for educational purposes and is aligned with NSW curricu
 NSW Quiz Fun supports learning by:
 - **Immediate Feedback**: Students learn from mistakes instantly
 - **Curriculum Alignment**: Questions match NSW educational standards
-- **Engaging Format**: Game-like experience increases motivation
-- **Progress Tracking**: Visual feedback encourages continued learning
+- **Gamified Learning**: Achievement system increases motivation and engagement
+- **Individual Progress**: Personalized tracking shows improvement over time
+- **Safe Environment**: No data collection or external accounts required
+- **Family-Friendly**: Multiple children can use the same device safely
+- **Learning Analytics**: Detailed subject-wise performance insights
+- **Streak Building**: Daily practice habits through streak tracking
 
 ## 📞 Support
 
