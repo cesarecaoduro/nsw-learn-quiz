@@ -174,7 +174,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-amber-800">Year:</span>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
-                  <SelectTrigger className="w-40 border-amber-200 focus:border-amber-400 focus:ring-amber-400">
+                  <SelectTrigger className="w-40 border-amber-200 focus:border-amber-400 focus:ring-amber-400 bg-white text-gray-900">
                     <SelectValue placeholder="Select Year" />
                   </SelectTrigger>
                   <SelectContent>
@@ -191,7 +191,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-amber-800">Subject:</span>
                 <Select value={selectedSubject} onValueChange={setSelectedSubject}>
-                  <SelectTrigger className="w-48 border-amber-200 focus:border-amber-400 focus:ring-amber-400">
+                  <SelectTrigger className="w-48 border-amber-200 focus:border-amber-400 focus:ring-amber-400 bg-white text-gray-900">
                     <SelectValue placeholder="Select Subject" />
                   </SelectTrigger>
                   <SelectContent>
