@@ -50,7 +50,7 @@ const Index = () => {
                   NSW Quiz Fun 🌟
                 </h1>
                 <p className="text-sm text-amber-700 font-medium">
-                  Learning Adventures • Years 2-6
+                  Learning Adventures • K-6
                 </p>
               </div>
             </div>

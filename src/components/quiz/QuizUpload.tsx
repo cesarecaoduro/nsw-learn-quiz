@@ -98,9 +98,9 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
               <SelectValue placeholder="Select year level" />
             </SelectTrigger>
             <SelectContent>
-              {[2, 3, 4, 5, 6].map((year) => (
-                <SelectItem key={year} value={year.toString()} className="text-sm">
-                  Year {year}
+              {['K', '1', '2', '3', '4', '5', '6'].map((year) => (
+                <SelectItem key={year} value={year} className="text-sm">
+                  {year === 'K' ? 'Kindergarten' : `Year ${year}`}
                 </SelectItem>
               ))}
             </SelectContent>
