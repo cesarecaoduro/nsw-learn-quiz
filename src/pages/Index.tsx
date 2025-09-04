@@ -17,17 +17,17 @@ const Index = () => {
 
   if (showUpload) {
     return (
-      <div className="min-h-screen bg-background p-3 sm:p-4">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 p-3 sm:p-4">
         <div className="container mx-auto py-4 sm:py-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">Upload New Quiz</h1>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-900 font-fredoka">Upload New Quiz 📚</h1>
             <Button 
               variant="outline" 
               onClick={() => setShowUpload(false)}
-              className="w-full sm:w-auto text-sm"
+              className="w-full sm:w-auto text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-amber-300 shadow-md"
               size="sm"
             >
-              Back to Quizzes
+              ← Back to Quizzes
             </Button>
           </div>
           <QuizUpload onQuizUploaded={handleQuizUploaded} />
