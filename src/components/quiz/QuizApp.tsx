@@ -77,11 +77,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     newAnswers[currentQuestionIndex] = answer;
     setUserAnswers(newAnswers);
     setHasAnswered(true);
-    
-    // Show next button after a short delay to allow user to see feedback
-    setTimeout(() => {
-      setShowNextButton(true);
-    }, 1000);
+    setShowNextButton(true); // Show immediately, no delay
   };
 
   const handleNextQuestion = () => {
@@ -143,56 +139,53 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
-      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
-          <Button 
-            variant="outline" 
-            onClick={handleNewQuiz}
-            className="flex items-center gap-2 text-sm w-full sm:w-auto"
-            size="sm"
-          >
-            ← Back to Quizzes
-          </Button>
-          <Button 
-            variant="outline" 
-            onClick={handleTryAgain}
-            className="flex items-center gap-2 text-sm w-full sm:w-auto"
-            size="sm"
-          >
-            Restart Quiz
-          </Button>
-        </div>
-
-        <div className="mb-6 sm:mb-8">
-          <ProgressBar 
-            current={currentQuestionIndex + 1} 
-            total={selectedQuiz.questions.length} 
-          />
-        </div>
-        
-        <QuestionCard
-          key={`question-${currentQuestionIndex}-${selectedQuiz.id}`}
-          question={currentQuestion}
-          questionNumber={currentQuestionIndex + 1}
-          onAnswer={handleAnswer}
-        />
-
-        <div className="flex justify-center mt-6 sm:mt-8 px-3 sm:px-0">
-          {showNextButton && (
-            <Button 
-              onClick={handleNextQuestion}
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 animate-fade-in"
-            >
-              {isLastQuestion ? 'Finish Quiz' : 'Next Question'}
-            </Button>
-          )}
-          
-          {!showNextButton && hasAnswered && (
-            <div className="text-muted-foreground animate-pulse text-sm sm:text-base">
-              Processing your answer...
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-6">
+          <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="flex flex-col xs:flex-row gap-2 xs:gap-3">
+              <Button 
+                variant="outline" 
+                onClick={handleNewQuiz}
+                className="flex items-center justify-center gap-2 text-xs sm:text-sm h-8 sm:h-9 px-3 sm:px-4"
+                size="sm"
+              >
+                ← Back to Quizzes
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={handleTryAgain}
+                className="flex items-center justify-center gap-2 text-xs sm:text-sm h-8 sm:h-9 px-3 sm:px-4"
+                size="sm"
+              >
+                Restart Quiz
+              </Button>
             </div>
-          )}
+          </div>
+
+          <div className="mb-4 sm:mb-6">
+            <ProgressBar 
+              current={currentQuestionIndex + 1} 
+              total={selectedQuiz.questions.length} 
+            />
+          </div>
+          
+          <QuestionCard
+            key={`question-${currentQuestionIndex}-${selectedQuiz.id}`}
+            question={currentQuestion}
+            questionNumber={currentQuestionIndex + 1}
+            onAnswer={handleAnswer}
+          />
+
+          <div className="flex justify-center mt-4 sm:mt-6 px-2">
+            {showNextButton && (
+              <Button 
+                onClick={handleNextQuestion}
+                className="w-full max-w-xs sm:max-w-sm bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 text-sm sm:text-base h-10 sm:h-11"
+              >
+                {isLastQuestion ? 'Finish Quiz' : 'Next Question'}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     );

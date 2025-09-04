@@ -38,19 +38,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-card sticky top-0 z-10">
         <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-primary shrink-0" />
-              <div>
-                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold">NSW Curriculum Quiz</h1>
-                <p className="text-xs sm:text-sm text-muted-foreground">Interactive learning for Years 1-6</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" />
+              <div className="min-w-0 flex-1">
+                <h1 className="text-sm sm:text-base lg:text-lg font-bold truncate">NSW Curriculum Quiz</h1>
+                <p className="text-xs text-muted-foreground">Years 1-6</p>
               </div>
             </div>
             <Button 
               onClick={() => setShowUpload(true)}
-              className="flex items-center gap-2 w-full sm:w-auto text-sm"
+              className="flex items-center gap-1 sm:gap-2 w-full sm:w-auto text-xs sm:text-sm h-8 sm:h-9"
               size="sm"
             >
               <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
