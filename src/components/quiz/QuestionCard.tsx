@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,11 +10,18 @@ interface QuestionCardProps {
   questionNumber: number;
   onAnswer: (answer: UserAnswer) => void;
   showFeedback?: boolean;
+  key?: string | number; // Force re-render when question changes
 }
 
 export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback = true }: QuestionCardProps) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+
+  // Reset state when question changes
+  useEffect(() => {
+    setSelectedOption(null);
+    setShowExplanation(false);
+  }, [question.id, questionNumber]);
 
   const handleOptionSelect = (optionIndex: number) => {
     if (selectedOption !== null) return; // Prevent changing answer

@@ -72,20 +72,21 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
         </CardContent>
       </Card>
 
-      <div className="flex justify-center gap-4">
-        <Button 
-          onClick={onTryAgain}
-          className="bg-primary hover:bg-primary/90"
-        >
-          Try Again
-        </Button>
-        <Button 
-          onClick={onNewQuiz}
-          variant="outline"
-        >
-          New Quiz
-        </Button>
-      </div>
+        <div className="flex justify-center gap-4">
+          <Button 
+            onClick={onTryAgain}
+            className="bg-primary hover:bg-primary/90 px-8"
+          >
+            Try Again
+          </Button>
+          <Button 
+            onClick={onNewQuiz}
+            variant="outline"
+            className="px-8"
+          >
+            New Quiz
+          </Button>
+        </div>
     </div>
   );
 };

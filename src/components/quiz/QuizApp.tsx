@@ -144,6 +144,23 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     
     return (
       <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-6">
+          <Button 
+            variant="outline" 
+            onClick={handleNewQuiz}
+            className="flex items-center gap-2"
+          >
+            ← Back to Quizzes
+          </Button>
+          <Button 
+            variant="outline" 
+            onClick={handleTryAgain}
+            className="flex items-center gap-2"
+          >
+            Restart Quiz
+          </Button>
+        </div>
+
         <div className="mb-8">
           <ProgressBar 
             current={currentQuestionIndex + 1} 
@@ -152,6 +169,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
         
         <QuestionCard
+          key={`question-${currentQuestionIndex}-${selectedQuiz.id}`} // Force re-render
           question={currentQuestion}
           questionNumber={currentQuestionIndex + 1}
           onAnswer={handleAnswer}
