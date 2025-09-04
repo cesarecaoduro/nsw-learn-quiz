@@ -10,12 +10,12 @@ interface QuizCardProps {
 }
 
 const subjectColors = {
-  "English": "bg-rose-100 text-rose-800 border-rose-300",
-  "Mathematics": "bg-orange-100 text-orange-800 border-orange-300", 
-  "Science": "bg-emerald-100 text-emerald-800 border-emerald-300",
-  "History": "bg-amber-100 text-amber-800 border-amber-300",
-  "Geography": "bg-yellow-100 text-yellow-800 border-yellow-300",
-  "Creative Arts": "bg-red-100 text-red-800 border-red-300"
+  "English": "bg-purple-50 text-purple-700 border-purple-200",
+  "Mathematics": "bg-blue-50 text-blue-700 border-blue-200", 
+  "Science": "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "History": "bg-slate-50 text-slate-700 border-slate-200",
+  "Geography": "bg-teal-50 text-teal-700 border-teal-200",
+  "Creative Arts": "bg-pink-50 text-pink-700 border-pink-200"
 };
 
 const subjectEmojis = {
@@ -40,10 +40,10 @@ export const QuizCard = ({ quiz, onSelect }: QuizCardProps) => {
   const { color, emoji } = getSubjectInfo();
 
   return (
-    <Card className="h-full bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:-translate-y-1">
+    <Card className="h-full bg-card border border-border shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:-translate-y-1">
       <CardHeader className="pb-3">
         <div className="flex justify-between items-start gap-3">
-          <CardTitle className="text-lg font-fredoka font-semibold text-amber-900 leading-tight">
+          <CardTitle className="text-lg font-fredoka font-semibold text-foreground leading-tight">
             {quiz.name}
           </CardTitle>
           <Badge className={`shrink-0 text-xs font-medium border ${color}`}>
@@ -53,23 +53,23 @@ export const QuizCard = ({ quiz, onSelect }: QuizCardProps) => {
       </CardHeader>
       
       <CardContent className="pt-0">
-        <div className="flex items-center gap-2 mb-4 p-3 bg-amber-100/50 rounded-lg border border-amber-200">
-          <Star className="w-4 h-4 text-amber-600 fill-amber-400" />
-          <p className="text-sm text-amber-800 font-medium">
+        <div className="flex items-center gap-2 mb-4 p-3 bg-muted rounded-lg border border-border">
+          <Star className="w-4 h-4 text-primary fill-primary/20" />
+          <p className="text-sm text-muted-foreground font-medium">
             {quiz.questions.length} Questions
           </p>
         </div>
         
         <Button 
           onClick={() => onSelect(quiz)} 
-          className="w-full mb-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md transition-all duration-200 hover:shadow-lg"
+          className="w-full mb-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-md transition-all duration-200 hover:shadow-lg"
         >
           Start Quiz 🚀
         </Button>
         
         {quiz.uploader && (
           <div className="flex justify-center">
-            <Badge variant="outline" className="text-xs text-amber-600 bg-amber-50 border-amber-200">
+            <Badge variant="outline" className="text-xs text-muted-foreground bg-muted border-border">
               {quiz.uploader}
             </Badge>
           </div>

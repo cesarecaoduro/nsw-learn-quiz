@@ -103,7 +103,7 @@ export const AIAssistantMode = ({ onBack }: AIAssistantModeProps) => {
     }
 
     const stage = curriculumStages[selectedYear as keyof typeof curriculumStages];
-    const outcomes = subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes]?.[selectedYear as keyof typeof subjectOutcomes[typeof selectedSubject]];
+    const outcomes = (subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes] as any)?.[selectedYear];
     const topicFocus = customTopic || "General curriculum topics";
     
     const prompt = `Create a NSW curriculum-aligned quiz for Year ${selectedYear === 'K' ? 'Kindergarten (K)' : selectedYear} ${selectedSubject} with ${questionCount} multiple-choice questions.
@@ -188,7 +188,7 @@ Generate the ${questionCount} questions now in the exact JSON format specified a
       }
     };
     
-    return examples[selectedSubject as keyof typeof examples]?.[selectedYear as keyof typeof examples[typeof selectedSubject]] || 
+    return (examples[selectedSubject as keyof typeof examples] as any)?.[selectedYear] || 
            'Age-appropriate questions that test understanding of key concepts';
   };
 
@@ -366,7 +366,7 @@ Generate the ${questionCount} questions now in the exact JSON format specified a
                     <strong>Stage:</strong> {curriculumStages[selectedYear as keyof typeof curriculumStages]}
                   </div>
                   <div className="text-xs text-blue-700 mt-1">
-                    <strong>Focus:</strong> {subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes]?.[selectedYear as keyof typeof subjectOutcomes[typeof selectedSubject]]}
+                    <strong>Focus:</strong> {(subjectOutcomes[selectedSubject as keyof typeof subjectOutcomes] as any)?.[selectedYear]}
                   </div>
                 </div>
               )}
