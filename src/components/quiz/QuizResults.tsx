@@ -13,12 +13,12 @@ interface QuizResultsProps {
 export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps) => {
   const getGradeColor = (grade: string) => {
     switch (grade) {
-      case 'A': return 'text-fun-green';
-      case 'B': return 'text-fun-blue';
-      case 'C': return 'text-fun-orange';
-      case 'D': return 'text-fun-yellow';
-      case 'F': return 'text-destructive';
-      default: return 'text-muted-foreground';
+      case 'A': return 'text-green-600';
+      case 'B': return 'text-blue-600';
+      case 'C': return 'text-amber-600';
+      case 'D': return 'text-yellow-600';
+      case 'F': return 'text-red-600';
+      default: return 'text-gray-600';
     }
   };
 
@@ -66,16 +66,16 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in">
+    <div className="w-full max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in bg-white">
       {/* Main Results Card */}
-      <Card className="text-center relative overflow-hidden rounded-3xl border-4 border-fun-purple/20">
-        <div className="absolute inset-0 bg-gradient-to-br from-fun-purple/5 via-fun-pink/5 to-fun-blue/5" />
+      <Card className="text-center relative overflow-hidden rounded-3xl border-4 border-amber-200 bg-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-orange-50/50 to-yellow-50/50" />
         
         <CardHeader className="px-4 sm:px-8 py-8 relative">
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-fun-yellow animate-pulse-fun" />
-              <Sparkles className="w-8 h-8 text-fun-purple absolute -top-2 -right-2 animate-wiggle" />
+              <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-yellow-500 animate-pulse" />
+              <Sparkles className="w-8 h-8 text-purple-500 absolute -top-2 -right-2 animate-bounce" />
             </div>
           </div>
           
@@ -84,7 +84,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
           </CardTitle>
           
           <div className="space-y-4">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-fredoka font-black text-transparent bg-clip-text bg-gradient-to-r from-fun-purple via-fun-pink to-fun-blue">
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-fredoka font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600">
               {result.correctAnswers}/{result.totalQuestions}
             </div>
             
@@ -99,7 +99,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
               {result.percentage}% Complete!
             </div>
             
-            <div className="text-lg sm:text-xl font-fredoka font-bold text-fun-purple">
+            <div className="text-lg sm:text-xl font-fredoka font-bold text-purple-600">
               {getEncouragementMessage(result.percentage)}
             </div>
           </div>
@@ -109,7 +109,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
 
       {/* Wrong Answers Review */}
       {result.wrongAnswers.length > 0 && (
-        <Card className="rounded-3xl border-2 border-red-200">
+        <Card className="rounded-3xl border-2 border-red-200 bg-white">
           <CardHeader className="px-4 sm:px-8 py-6 bg-gradient-to-r from-red-50 to-pink-50 rounded-t-3xl">
             <CardTitle className="text-xl sm:text-2xl font-fredoka font-bold text-red-800 text-center">
               📚 Let's Learn from Mistakes!
@@ -119,7 +119,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
             </p>
           </CardHeader>
           
-          <CardContent className="px-4 sm:px-8 py-6 space-y-4">
+          <CardContent className="px-4 sm:px-8 py-6 space-y-4 bg-white">
             {result.wrongAnswers.map((wrongAnswer, index) => (
               <div key={index} className="bg-white rounded-xl border-2 border-red-100 p-4 space-y-3">
                 <div className="flex items-start gap-3">
