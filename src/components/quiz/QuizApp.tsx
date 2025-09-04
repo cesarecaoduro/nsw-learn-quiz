@@ -113,21 +113,33 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'selection') {
     return (
-      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">NSW Curriculum Quiz</h1>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4 sm:px-0">
-            Test your knowledge across multiple subjects
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+        <div className="text-center mb-8 sm:mb-10">
+          <div className="mb-6">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-gradient-to-r from-fun-purple to-fun-pink rounded-full flex items-center justify-center shadow-2xl animate-pulse-fun">
+              <span className="text-3xl sm:text-4xl">🦉</span>
+            </div>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-fredoka font-bold mb-4 text-slate-700">
+            🌈 Learning Adventure Hub!
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 px-4 sm:px-0 font-comic">
+            Pick a quiz and let's explore together! ✨🚀
           </p>
         </div>
         
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {availableQuizzes.map((quiz) => (
-            <QuizCard 
-              key={quiz.id} 
-              quiz={quiz} 
-              onSelect={handleQuizSelect} 
-            />
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+          {availableQuizzes.map((quiz, index) => (
+            <div 
+              key={quiz.id}
+              className="animate-bounce-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <QuizCard 
+                quiz={quiz} 
+                onSelect={handleQuizSelect} 
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -180,9 +192,9 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
             {showNextButton && (
               <Button 
                 onClick={handleNextQuestion}
-                className="w-full max-w-xs sm:max-w-sm bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 text-sm sm:text-base h-10 sm:h-11"
+                className="w-full max-w-xs sm:max-w-sm bg-gradient-to-r from-fun-green to-fun-blue hover:from-fun-blue hover:to-fun-green text-white font-fredoka font-bold px-6 py-3 text-sm sm:text-base h-12 sm:h-13 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 animate-bounce-in"
               >
-                {isLastQuestion ? 'Finish Quiz' : 'Next Question'}
+                {isLastQuestion ? '🎯 Finish Adventure!' : '🚀 Next Question!'}
               </Button>
             )}
           </div>

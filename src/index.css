@@ -8,41 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 248 250 255;
+    --foreground: 15 23 42;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
 
-    --primary: 217 91% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 147 51 234;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 210 40% 95%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 241 245 249;
+    --secondary-foreground: 51 65 85;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 20% 35%;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
 
-    --accent: 210 40% 92%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 34 197 94;
+    --accent-foreground: 255 255 255;
 
-    --destructive: 0 84% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
 
-    --success: 142 76% 32%;
-    --success-foreground: 0 0% 100%;
+    --success: 34 197 94;
+    --success-foreground: 255 255 255;
 
-    --warning: 38 92% 45%;
-    --warning-foreground: 0 0% 100%;
+    --warning: 251 191 36;
+    --warning-foreground: 15 23 42;
 
-    --border: 214.3 31.8% 85%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 217 91% 50%;
+    --info: 59 130 246;
+    --info-foreground: 255 255 255;
 
-    --radius: 0.5rem;
+    --fun-pink: 236 72 153;
+    --fun-orange: 251 146 60;
+    --fun-blue: 59 130 246;
+    --fun-green: 34 197 94;
+    --fun-purple: 147 51 234;
+    --fun-yellow: 250 204 21;
+
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 147 51 234;
+
+    /* Fun gradients for kids */
+    --gradient-rainbow: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-sunset: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-ocean: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-forest: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+    --radius: 1rem;
 
     /* Animations and responsive spacing */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -120,6 +136,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-foreground font-comic;
   }
 }
