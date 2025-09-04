@@ -117,15 +117,15 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'selection') {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">NSW Curriculum Quiz</h1>
-          <p className="text-xl text-muted-foreground">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">NSW Curriculum Quiz</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4 sm:px-0">
             Test your knowledge across multiple subjects
           </p>
         </div>
         
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {availableQuizzes.map((quiz) => (
             <QuizCard 
               key={quiz.id} 
@@ -143,25 +143,27 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
           <Button 
             variant="outline" 
             onClick={handleNewQuiz}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 text-sm w-full sm:w-auto"
+            size="sm"
           >
             ← Back to Quizzes
           </Button>
           <Button 
             variant="outline" 
             onClick={handleTryAgain}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 text-sm w-full sm:w-auto"
+            size="sm"
           >
             Restart Quiz
           </Button>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <ProgressBar 
             current={currentQuestionIndex + 1} 
             total={selectedQuiz.questions.length} 
@@ -169,25 +171,25 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
         
         <QuestionCard
-          key={`question-${currentQuestionIndex}-${selectedQuiz.id}`} // Force re-render
+          key={`question-${currentQuestionIndex}-${selectedQuiz.id}`}
           question={currentQuestion}
           questionNumber={currentQuestionIndex + 1}
           onAnswer={handleAnswer}
         />
 
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6 sm:mt-8 px-3 sm:px-0">
           {showNextButton && (
             <Button 
               onClick={handleNextQuestion}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 animate-fade-in"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 animate-fade-in"
             >
               {isLastQuestion ? 'Finish Quiz' : 'Next Question'}
             </Button>
           )}
           
           {!showNextButton && hasAnswered && (
-            <div className="text-muted-foreground animate-pulse">
+            <div className="text-muted-foreground animate-pulse text-sm sm:text-base">
               Processing your answer...
             </div>
           )}

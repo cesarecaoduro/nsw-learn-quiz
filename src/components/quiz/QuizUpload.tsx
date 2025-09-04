@@ -76,29 +76,30 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle>Upload New Quiz</CardTitle>
+      <CardHeader className="px-4 sm:px-6">
+        <CardTitle className="text-lg sm:text-xl">Upload New Quiz</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 px-4 sm:px-6">
         <div className="space-y-2">
-          <Label htmlFor="quiz-name">Quiz Name</Label>
+          <Label htmlFor="quiz-name" className="text-sm font-medium">Quiz Name</Label>
           <Input
             id="quiz-name"
             placeholder="e.g., Year 5 Science Quiz"
             value={quizName}
             onChange={(e) => setQuizName(e.target.value)}
+            className="text-sm"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="year-select">Year Level</Label>
+          <Label htmlFor="year-select" className="text-sm font-medium">Year Level</Label>
           <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger>
+            <SelectTrigger className="text-sm">
               <SelectValue placeholder="Select year level" />
             </SelectTrigger>
             <SelectContent>
               {[1, 2, 3, 4, 5, 6].map((year) => (
-                <SelectItem key={year} value={year.toString()}>
+                <SelectItem key={year} value={year.toString()} className="text-sm">
                   Year {year}
                 </SelectItem>
               ))}
@@ -107,7 +108,7 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="quiz-json">Quiz Questions (JSON)</Label>
+          <Label htmlFor="quiz-json" className="text-sm font-medium">Quiz Questions (JSON)</Label>
           <Textarea
             id="quiz-json"
             placeholder={`Paste your quiz JSON here. Example format:
@@ -122,11 +123,11 @@ export const QuizUpload = ({ onQuizUploaded }: QuizUploadProps) => {
 ]`}
             value={quizJson}
             onChange={(e) => setQuizJson(e.target.value)}
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[150px] sm:min-h-[200px] font-mono text-xs sm:text-sm"
           />
         </div>
 
-        <Button onClick={handleUpload} className="w-full">
+        <Button onClick={handleUpload} className="w-full text-sm">
           Upload Quiz
         </Button>
       </CardContent>

@@ -72,32 +72,32 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader className="space-y-4">
+      <CardHeader className="space-y-3 sm:space-y-4 px-4 sm:px-6">
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className="text-primary border-primary">
+          <Badge variant="outline" className="text-primary border-primary text-xs sm:text-sm">
             {question.subject}
           </Badge>
         </div>
-        <h2 className="text-xl font-semibold leading-relaxed">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold leading-relaxed">
           {question.question}
         </h2>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid gap-3">
+      <CardContent className="space-y-3 sm:space-y-4 px-4 sm:px-6">
+        <div className="grid gap-2 sm:gap-3">
           {question.options.map((option, index) => (
             <Button
               key={index}
               variant="outline"
-              className={`justify-start text-left h-auto p-4 ${getOptionStyle(index)}`}
+              className={`justify-start text-left h-auto p-3 sm:p-4 text-sm sm:text-base ${getOptionStyle(index)}`}
               onClick={() => handleOptionSelect(index)}
               disabled={selectedOption !== null}
             >
               <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-3">
-                  <span className="font-medium text-muted-foreground">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <span className="font-medium text-muted-foreground text-xs sm:text-sm">
                     {String.fromCharCode(65 + index)}.
                   </span>
-                  <span>{option}</span>
+                  <span className="text-left leading-relaxed">{option}</span>
                 </div>
                 {getOptionIcon(index)}
               </div>
@@ -106,25 +106,25 @@ export const QuestionCard = ({ question, questionNumber, onAnswer, showFeedback 
         </div>
 
         {showExplanation && (
-          <div className={`mt-6 p-4 rounded-lg ${selectedOption === question.correct ? 'bg-success/10 border border-success/20' : 'bg-destructive/10 border border-destructive/20'}`}>
+          <div className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg ${selectedOption === question.correct ? 'bg-success/10 border border-success/20' : 'bg-destructive/10 border border-destructive/20'}`}>
             <div className="flex items-center gap-2 mb-2">
               {selectedOption === question.correct ? (
                 <>
-                  <CheckCircle className="w-5 h-5 text-success" />
-                  <span className="font-semibold text-success">Correct!</span>
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-success shrink-0" />
+                  <span className="font-semibold text-success text-sm sm:text-base">Correct!</span>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-5 h-5 text-destructive" />
-                  <span className="font-semibold text-destructive">Incorrect</span>
+                  <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-destructive shrink-0" />
+                  <span className="font-semibold text-destructive text-sm sm:text-base">Incorrect</span>
                 </>
               )}
             </div>
             <div className="space-y-2">
-              <p className="font-medium">
+              <p className="font-medium text-sm sm:text-base">
                 Correct answer: {String.fromCharCode(65 + question.correct)}. {question.options[question.correct]}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 <strong>Explanation:</strong> {question.explanation}
               </p>
             </div>
