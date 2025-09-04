@@ -266,14 +266,14 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
               <Button 
                 variant="outline" 
                 onClick={handleNewQuiz}
-                className="text-amber-800 border-amber-300 hover:bg-amber-100"
+                className="bg-white text-amber-800 border-amber-300 hover:bg-amber-50 hover:text-amber-900 hover:border-amber-400 font-medium shadow-sm"
               >
                 ← Back to Quizzes
               </Button>
               <Button 
                 variant="outline" 
                 onClick={handleTryAgain}
-                className="text-amber-800 border-amber-300 hover:bg-amber-100"
+                className="bg-white text-amber-800 border-amber-300 hover:bg-amber-50 hover:text-amber-900 hover:border-amber-400 font-medium shadow-sm"
               >
                 🔄 Restart Quiz
               </Button>

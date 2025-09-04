@@ -1,4 +1,5 @@
-import { BookOpen, Users, Calendar } from "lucide-react";
+import { MacOSBookIcon } from "@/components/ui/macos-icon";
+import { Users, Calendar } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,8 +11,8 @@ export const Footer = () => {
           {/* Left Column - Branding & Mission */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-lg shadow-md">
-                <BookOpen className="w-5 h-5 text-white" />
+              <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-xl shadow-md">
+                <MacOSBookIcon size="md" className="text-white stroke-[1.5]" />
               </div>
               <div>
                 <h3 className="text-lg font-fredoka font-bold text-amber-900">

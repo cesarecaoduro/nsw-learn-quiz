@@ -10,7 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Quiz, Question } from "@/types/quiz";
 import { QuizPreview } from "./QuizPreview";
 import { questionTemplates, getTemplatesBySubjectAndYear } from "@/data/questionTemplates";
-import { ArrowLeft, Plus, Trash2, Save, Eye, EyeOff } from "lucide-react";
+import { MacOSPlusIcon } from "@/components/ui/macos-icon";
+import { ArrowLeft, Trash2, Save, Eye, EyeOff } from "lucide-react";
 
 interface EasyModeCreatorProps {
   onQuizUploaded: (quiz: Quiz) => void;
@@ -271,7 +272,7 @@ export const EasyModeCreator = ({ onQuizUploaded, onBack }: EasyModeCreatorProps
                 ❓ Questions ({questions.length})
               </CardTitle>
               <Button onClick={addQuestion} className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium">
-                <Plus className="w-4 h-4 mr-2" />
+                <MacOSPlusIcon size="sm" className="mr-2 text-white" />
                 Add Question
               </Button>
             </CardHeader>

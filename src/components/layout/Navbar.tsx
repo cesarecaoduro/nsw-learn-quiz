@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { BookOpen, Plus } from "lucide-react";
+import { MacOSBookIcon, MacOSPlusIcon } from "@/components/ui/macos-icon";
 
 interface NavbarProps {
   onAddQuiz: () => void;
@@ -16,8 +16,8 @@ export const Navbar = ({ onAddQuiz, onLogoClick, showAddButton = true }: NavbarP
             className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
             onClick={onLogoClick}
           >
-            <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-lg shadow-md">
-              <BookOpen className="w-6 h-6 text-white" />
+            <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-xl shadow-md">
+              <MacOSBookIcon size="lg" className="text-white stroke-[1.5]" />
             </div>
             <div>
               <h1 className="text-lg sm:text-xl font-fredoka font-bold text-amber-900">
@@ -34,7 +34,7 @@ export const Navbar = ({ onAddQuiz, onLogoClick, showAddButton = true }: NavbarP
               onClick={onAddQuiz}
               className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md transition-all duration-200"
             >
-              <Plus className="w-4 h-4 mr-2" />
+              <MacOSPlusIcon size="sm" className="mr-2" />
               Add Quiz
             </Button>
           )}

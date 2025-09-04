@@ -2,7 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { QuizResult } from "@/types/quiz";
-import { Trophy, Star, Sparkles, XCircle, CheckCircle } from "lucide-react";
+import { MacOSTrophyIcon, MacOSStarIcon, MacOSCheckCircleIcon, MacOSXCircleIcon } from "@/components/ui/macos-icon";
+import { Sparkles } from "lucide-react";
 
 interface QuizResultsProps {
   result: QuizResult;
@@ -74,8 +75,8 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
         <CardHeader className="px-4 sm:px-8 py-8 relative">
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-yellow-500 animate-pulse" />
-              <Sparkles className="w-8 h-8 text-purple-500 absolute -top-2 -right-2 animate-bounce" />
+              <MacOSTrophyIcon size="xl" className="w-16 h-16 sm:w-20 sm:h-20 text-yellow-500 animate-pulse stroke-[1.5]" />
+              <Sparkles className="w-8 h-8 text-purple-500 absolute -top-2 -right-2 animate-bounce stroke-[1.5]" />
             </div>
           </div>
           
@@ -121,7 +122,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
           
           <CardContent className="px-4 sm:px-8 py-6 space-y-4 bg-white">
             {result.wrongAnswers.map((wrongAnswer, index) => (
-              <div key={index} className="bg-white rounded-xl border-2 border-red-100 p-4 space-y-3">
+              <div key={index} className="bg-white rounded-2xl border-2 border-red-100 p-4 space-y-3 shadow-sm">
                 <div className="flex items-start gap-3">
                   <Badge className={`shrink-0 text-xs font-medium border ${getSubjectColors(wrongAnswer.question.subject)}`}>
                     {getSubjectEmoji(wrongAnswer.question.subject)} {wrongAnswer.question.subject}
@@ -133,8 +134,8 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
                 </h3>
                 
                 <div className="space-y-2">
-                  <div className="flex items-center gap-3 p-3 bg-red-50 border-2 border-red-200 rounded-lg">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0" />
+                  <div className="flex items-center gap-3 p-3 bg-red-50 border-2 border-red-200 rounded-xl">
+                    <MacOSXCircleIcon size="md" variant="error" className="shrink-0" />
                     <div className="flex-1">
                       <span className="text-sm font-medium text-red-700">Your answer:</span>
                       <div className="font-medium text-red-800">
@@ -143,8 +144,8 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border-2 border-green-200 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
+                  <div className="flex items-center gap-3 p-3 bg-green-50 border-2 border-green-200 rounded-xl">
+                    <MacOSCheckCircleIcon size="md" variant="success" className="shrink-0" />
                     <div className="flex-1">
                       <span className="text-sm font-medium text-green-700">Correct answer:</span>
                       <div className="font-medium text-green-800">
@@ -154,7 +155,7 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
                   </div>
                 </div>
                 
-                <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                <div className="bg-blue-50 rounded-xl p-3 border border-blue-200">
                   <span className="text-sm font-medium text-blue-700">Explanation:</span>
                   <p className="text-blue-800 text-sm mt-1 leading-relaxed">
                     {wrongAnswer.question.explanation}
@@ -170,14 +171,14 @@ export const QuizResults = ({ result, onTryAgain, onNewQuiz }: QuizResultsProps)
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 px-4 sm:px-0">
         <Button 
           onClick={onTryAgain}
-          className="w-full sm:w-auto bg-gradient-to-r from-blue-300 to-purple-300 hover:from-blue-400 hover:to-purple-400 text-gray-800 font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-blue-200"
+          className="w-full sm:w-auto bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-500 hover:to-purple-500 text-white font-fredoka font-semibold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 backdrop-blur-sm"
         >
           🔄 Try Again!
         </Button>
         
         <Button 
           onClick={onNewQuiz}
-          className="w-full sm:w-auto bg-gradient-to-r from-pink-300 to-rose-300 hover:from-pink-400 hover:to-rose-400 text-gray-800 font-fredoka font-bold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-pink-200"
+          className="w-full sm:w-auto bg-gradient-to-r from-orange-400 to-amber-400 hover:from-orange-500 hover:to-amber-500 text-white font-fredoka font-semibold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 backdrop-blur-sm"
         >
           🚀 New Adventure!
         </Button>
