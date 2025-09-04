@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QuizApp } from "@/components/quiz/QuizApp";
 import { QuizUpload } from "@/components/quiz/QuizUpload";
-import { sampleQuizzes } from "@/data/sampleQuizzes";
+import { sampleQuizzes } from "@/data/allQuizzes";
 import { Quiz } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
 import { Plus, BookOpen } from "lucide-react";
@@ -38,26 +38,26 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <header className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-200 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-primary p-2 rounded-lg">
+              <div className="bg-gradient-to-br from-orange-400 to-amber-500 p-2 rounded-lg shadow-md">
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg sm:text-xl font-fredoka font-bold text-gray-900">
+                <h1 className="text-lg sm:text-xl font-fredoka font-bold text-amber-900">
                   NSW Quiz Fun 🌟
                 </h1>
-                <p className="text-sm text-gray-600 font-medium">
-                  Learning Adventures • Years 1-6
+                <p className="text-sm text-amber-700 font-medium">
+                  Learning Adventures • Years 2-6
                 </p>
               </div>
             </div>
 
             <Button 
               onClick={() => setShowUpload(true)}
-              className="bg-primary hover:bg-primary/90 text-white font-medium shadow-sm"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md transition-all duration-200"
             >
               <Plus className="w-4 h-4 mr-2" />
               Add Quiz

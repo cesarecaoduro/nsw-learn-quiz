@@ -21,14 +21,30 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
   const [showNextButton, setShowNextButton] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [selectedYear, setSelectedYear] = useState<string>('all');
+  const [selectedSubject, setSelectedSubject] = useState<string>('all');
 
   // Get unique years from available quizzes
   const availableYears = Array.from(new Set(availableQuizzes.map(quiz => quiz.year))).sort();
   
-  // Filter quizzes based on selected year
-  const filteredQuizzes = selectedYear === 'all' 
-    ? availableQuizzes 
-    : availableQuizzes.filter(quiz => quiz.year === selectedYear);
+  // Get unique subjects from available quizzes
+  const availableSubjects = Array.from(new Set(
+    availableQuizzes.flatMap(quiz => 
+      quiz.questions.map(question => question.subject)
+    )
+  )).sort();
+  
+  // Filter quizzes based on selected year and subject
+  let filteredQuizzes = availableQuizzes;
+  
+  if (selectedYear !== 'all') {
+    filteredQuizzes = filteredQuizzes.filter(quiz => quiz.year === selectedYear);
+  }
+  
+  if (selectedSubject !== 'all') {
+    filteredQuizzes = filteredQuizzes.filter(quiz => 
+      quiz.questions.some(question => question.subject === selectedSubject)
+    );
+  }
 
   // Reset hasAnswered when question changes
   useEffect(() => {
@@ -123,29 +139,29 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
 
   if (currentState === 'selection') {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-10">
             <div className="mb-6">
-              <div className="w-20 h-20 mx-auto bg-primary rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-400 to-amber-500 rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-3xl">🦉</span>
               </div>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl font-fredoka font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-fredoka font-bold text-amber-900 mb-4">
               NSW Learning Quiz 🌟
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-lg text-amber-700 max-w-2xl mx-auto mb-6">
               Choose your adventure and test your knowledge!
             </p>
             
-            {/* Year Filter */}
-            <div className="flex justify-center mb-6">
+            {/* Filters */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-6">
               <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-gray-700">Filter by Year:</span>
+                <span className="text-sm font-medium text-amber-800">Year:</span>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
-                  <SelectTrigger className="w-40">
+                  <SelectTrigger className="w-40 border-amber-200 focus:border-amber-400 focus:ring-amber-400">
                     <SelectValue placeholder="Select Year" />
                   </SelectTrigger>
                   <SelectContent>
@@ -153,6 +169,23 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
                     {availableYears.map((year) => (
                       <SelectItem key={year} value={year}>
                         Year {year}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-amber-800">Subject:</span>
+                <Select value={selectedSubject} onValueChange={setSelectedSubject}>
+                  <SelectTrigger className="w-48 border-amber-200 focus:border-amber-400 focus:ring-amber-400">
+                    <SelectValue placeholder="Select Subject" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Subjects</SelectItem>
+                    {availableSubjects.map((subject) => (
+                      <SelectItem key={subject} value={subject}>
+                        {subject}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -173,14 +206,32 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
               ))
             ) : (
               <div className="col-span-full text-center py-12">
-                <p className="text-gray-500 text-lg">No quizzes available for Year {selectedYear}</p>
-                <Button 
-                  onClick={() => setSelectedYear('all')} 
-                  variant="outline" 
-                  className="mt-4"
-                >
-                  Show All Years
-                </Button>
+                <p className="text-amber-700 text-lg">
+                  No quizzes available for {selectedYear !== 'all' ? `Year ${selectedYear}` : ''}
+                  {selectedYear !== 'all' && selectedSubject !== 'all' ? ' and ' : ''}
+                  {selectedSubject !== 'all' ? `${selectedSubject}` : ''}
+                  {selectedYear === 'all' && selectedSubject === 'all' ? 'the selected filters' : ''}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-2 justify-center mt-4">
+                  {selectedYear !== 'all' && (
+                    <Button 
+                      onClick={() => setSelectedYear('all')} 
+                      variant="outline" 
+                      className="border-amber-300 text-amber-800 hover:bg-amber-50"
+                    >
+                      Show All Years
+                    </Button>
+                  )}
+                  {selectedSubject !== 'all' && (
+                    <Button 
+                      onClick={() => setSelectedSubject('all')} 
+                      variant="outline" 
+                      className="border-amber-300 text-amber-800 hover:bg-amber-50"
+                    >
+                      Show All Subjects
+                    </Button>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -194,22 +245,22 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
     const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
     
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
         {/* Navigation */}
-        <div className="bg-white border-b border-gray-200 p-4">
+        <div className="bg-amber-50 border-b border-amber-200 p-4">
           <div className="container mx-auto max-w-4xl">
             <div className="flex justify-between">
               <Button 
                 variant="outline" 
                 onClick={handleNewQuiz}
-                className="text-gray-700 border-gray-300"
+                className="text-amber-800 border-amber-300 hover:bg-amber-100"
               >
                 ← Back to Quizzes
               </Button>
               <Button 
                 variant="outline" 
                 onClick={handleTryAgain}
-                className="text-gray-700 border-gray-300"
+                className="text-amber-800 border-amber-300 hover:bg-amber-100"
               >
                 🔄 Restart Quiz
               </Button>
@@ -218,7 +269,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
         </div>
 
         {/* Progress */}
-        <div className="bg-white border-b border-gray-100 p-4">
+        <div className="bg-amber-50 border-b border-amber-100 p-4">
           <div className="container mx-auto max-w-4xl">
             <ProgressBar 
               current={currentQuestionIndex + 1} 
@@ -241,7 +292,7 @@ export const QuizApp = ({ availableQuizzes }: QuizAppProps) => {
             {showNextButton && (
               <Button 
                 onClick={handleNextQuestion}
-                className="bg-primary hover:bg-primary/90 text-white font-medium px-6 sm:px-8 py-3"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium px-6 sm:px-8 py-3 shadow-lg"
                 size="lg"
               >
                 {isLastQuestion ? 'Finish Quiz 🏆' : 'Next Question →'}
