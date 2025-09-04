@@ -41,7 +41,7 @@ const Index = () => {
       <Navbar 
         onAddQuiz={() => setShowUpload(true)} 
         onLogoClick={() => setShowUpload(false)}
-        showAddButton={true}
+        showAddButton={false}
       />
       
       <div className="flex-1">
